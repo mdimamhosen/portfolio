@@ -32,7 +32,7 @@ nav li{
   font-size: 20px;
 border: 0ch;
 padding: 18px 35px 19px 36px ;
-margin-bottom: 10px;
+
   }
 nav ul{
   align-items: center;
@@ -64,6 +64,7 @@ font-size: 85px;
 border: 0ch;
 padding: 18px 35px 19px 36px ;
 margin-top: 20px;
+margin-bottom: 10px;
 }
 
 

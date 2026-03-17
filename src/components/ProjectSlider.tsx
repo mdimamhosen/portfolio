@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
 
@@ -60,6 +60,7 @@ const ProjectSlider = () => {
   const headingRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -170,14 +171,43 @@ const ProjectSlider = () => {
 
               {/* Modal for website preview */}
               {project.link && project.link !== "#" && (
-                <Dialog open={open} onOpenChange={setOpen}>
-                  <DialogContent className="max-w-3xl w-full h-[80vh]">
-                    <iframe
-                      src={project.link}
-                      title={project.title}
-                      className="w-full h-full border-none rounded-lg"
-                      allowFullScreen
-                    />
+                <Dialog open={open} onOpenChange={(val) => {
+                  setOpen(val);
+                  if (val) setLoading(true);
+                }}>
+                  <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-0 overflow-hidden border-white/10 bg-black/80 backdrop-blur-xl flex flex-col">
+                    <div className="flex items-center justify-between p-4 border-b border-white/10 bg-black/40">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-red-500" />
+                        <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                      </div>
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-xs font-medium text-primary hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-full border border-white/10"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        Open Original
+                      </a>
+                    </div>
+                    
+                    <div className="flex-1 relative bg-white">
+                      {loading && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-20">
+                          <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
+                          <p className="text-sm font-mono text-primary/60">Establishing secure connection...</p>
+                        </div>
+                      )}
+                      <iframe
+                        src={project.link}
+                        title={project.title}
+                        className="w-full h-full border-none"
+                        onLoad={() => setLoading(false)}
+                        allowFullScreen
+                      />
+                    </div>
                   </DialogContent>
                 </Dialog>
               )}

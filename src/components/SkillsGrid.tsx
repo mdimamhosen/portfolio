@@ -5,7 +5,7 @@ import { createMagneticEffect } from '@/lib/gsap';
 const skillCategories = [
   {
     title: "Frontend",
-    skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "React Native", "Expo", "TypeScript", "Redux", "Next.js", "Zustand"]
+    skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "React Native", "Flutter", "Expo", "TypeScript", "Redux", "Next.js", "Zustand"]
   },
   {
     title: "Backend",

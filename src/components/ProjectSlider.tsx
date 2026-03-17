@@ -1,35 +1,53 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from '@/lib/gsap';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "@/lib/gsap";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "./ui/button";
+import { Dialog, DialogContent } from "./ui/dialog";
 
 const projects = [
   {
-    title: "AI Agent Platform",
-    description: "Autonomous AI agents for task automation with multi-agent orchestration and RAG systems",
-    tech: ["React Native", "Expo", "LangChain", "Go", "PostgreSQL"],
-    gradient: "from-primary/20 to-accent/20",
+    title: "LeafCare Ai",
+    description:
+      "AI Based tree diseases detection platform for farmers and researchers.",
+    tech: ["Next.js", "TensorFlow", "TailwindCSS", "AI"],
+    gradient: "from-green-400/20 to-lime-500/20",
+    link: "https://leafcareai-ruddy.vercel.app/",
   },
   {
-    title: "Mobile Fintech App",
-    description: "Cross-platform mobile banking app with real-time transactions and biometric auth",
-    tech: ["React Native", "Expo", "Node.js", "MongoDB", "Socket.io"],
-    gradient: "from-accent/20 to-primary/20",
+    title: "TreLux",
+    description:
+      "E-Commerce Mens shopping website with modern UI and seamless checkout.",
+    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    gradient: "from-blue-500/20 to-indigo-600/20",
+    link: "https://trelux.vercel.app/",
   },
   {
-    title: "Enterprise Dashboard",
-    description: "Real-time analytics dashboard with complex data visualizations and role-based access",
-    tech: ["Next.js", "TypeScript", "Go", "PostgreSQL"],
-    gradient: "from-primary/20 to-muted/40",
+    title: "EduCoder",
+    description:
+      "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
+    tech: ["Next.js", "Supabase", "TailwindCSS"],
+    gradient: "from-blue-400/20 to-cyan-500/20",
+    link: "https://edu-coder.vercel.app/",
   },
   {
-    title: "AI Workflow Engine",
-    description: "Intelligent automation platform processing 10K+ tasks daily with n8n and custom AI models",
-    tech: ["Next.js", "n8n", "OpenAI", "Prisma"],
-    gradient: "from-muted/40 to-primary/20",
+    title: "ReviewHub",
+    description:
+      "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
+    tech: ["React", "Node.js", "MongoDB"],
+    gradient: "from-yellow-400/20 to-pink-500/20",
+    link: "https://assignment-9-client-iota.vercel.app/",
+  },
+  {
+    title: "BU-Trace",
+    description: "Realtime Bus Tracking system for University of Barishal.",
+    tech: ["React Native", "Firebase", "Map APIs"],
+    gradient: "from-green-400/20 to-blue-500/20",
+    link: "#",
   },
 ];
 
 const ProjectSlider = () => {
+  const [open, setOpen] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -49,7 +67,7 @@ const ProjectSlider = () => {
             trigger: sectionRef.current,
             start: "top 60%",
           },
-        }
+        },
       );
     }, sectionRef);
 
@@ -85,73 +103,113 @@ const ProjectSlider = () => {
   const project = projects[currentIndex];
 
   return (
-    <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
+    <div
+      ref={sectionRef}
+      className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden"
+    >
       <div className="max-w-6xl mx-auto w-full content-overlay">
         <div ref={headingRef} className="mb-6 md:mb-10">
-          <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">04 / Projects</p>
+          <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">
+            04 / Projects
+          </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
             Featured <span className="text-primary text-glow">Work</span>
           </h2>
           <p className="text-muted-foreground mt-2 md:mt-4 max-w-xl text-sm md:text-base">
-            A selection of projects showcasing expertise in mobile apps, AI agents, and full-stack systems.
+            A selection of projects showcasing expertise in mobile apps, AI
+            agents, and full-stack systems.
           </p>
         </div>
 
         <div className="relative">
           <div
             ref={sliderRef}
-            className={`glass-card p-4 sm:p-6 md:p-10 relative overflow-hidden bg-gradient-to-br ${project.gradient}`}
+            className={`glass-card p-4 sm:p-6 md:p-10 relative overflow-hidden bg-black border border-gray-800 grayscale text-white w-full max-w-3xl min-h-[220px] md:min-h-[260px] mx-auto flex flex-col justify-center max-w-[520px] md:max-w-[640px]`}
           >
-            <span className="absolute top-2 right-4 sm:top-4 sm:right-6 text-4xl sm:text-6xl md:text-8xl font-bold text-muted/10">
+            <span className="absolute top-2 right-4 sm:top-4 sm:right-6 text-4xl sm:text-6xl md:text-8xl font-bold text-white/10">
               0{currentIndex + 1}
             </span>
 
             <div className="relative z-10">
-              <h3 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 md:mb-4">{project.title}</h3>
-              <p className="text-muted-foreground text-sm md:text-lg mb-4 md:mb-6 max-w-2xl">
+              <h3 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 md:mb-4">
+                {project.title}
+              </h3>
+              <p className="text-gray-300 text-sm md:text-lg mb-4 md:mb-6 max-w-2xl">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 md:gap-3">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 md:px-4 py-1 md:py-2 text-[10px] sm:text-xs md:text-sm bg-muted/50 rounded-full border border-border"
+              <div className="flex flex-wrap gap-1.5 md:gap-3 mb-4 items-end justify-between">
+                <div className="flex flex-wrap gap-1.5 md:gap-3">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 md:px-4 py-1 md:py-2 text-[10px] sm:text-xs md:text-sm bg-gray-800 rounded-full border border-gray-700 text-gray-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                {project.link && project.link !== "#" && (
+                  <Button
+                    onClick={() => setOpen(true)}
+                    className="px-3 py-1 text-xs sm:text-sm rounded-full bg-white/30 backdrop-blur-md border border-white/40 shadow-md text-primary hover:bg-primary/80 hover:text-white transition-all ml-2"
+                    style={{ minWidth: "70px" }}
                   >
-                    {tech}
-                  </span>
-                ))}
+                    Live Link
+                  </Button>
+                )}
               </div>
+
+              {/* Modal for website preview */}
+              {project.link && project.link !== "#" && (
+                <Dialog open={open} onOpenChange={setOpen}>
+                  <DialogContent className="max-w-3xl w-full h-[80vh]">
+                    <iframe
+                      src={project.link}
+                      title={project.title}
+                      className="w-full h-full border-none rounded-lg"
+                      allowFullScreen
+                    />
+                  </DialogContent>
+                </Dialog>
+              )}
             </div>
           </div>
 
           {/* Navigation */}
           <div className="flex items-center justify-between mt-4 md:mt-6">
             <div className="flex gap-1.5 md:gap-2">
-              {projects.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                    i === currentIndex ? 'bg-primary w-5 md:w-8' : 'bg-muted hover:bg-muted-foreground'
-                  }`}
-                />
-              ))}
+              {/* Only show 3 navigation dots: previous, current, next */}
+              {[-1, 0, 1].map((offset) => {
+                const total = projects.length;
+                const i = (currentIndex + offset + total) % total;
+                return (
+                  <Button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                      i === currentIndex
+                        ? "bg-white w-5 md:w-8"
+                        : "bg-gray-700 hover:bg-gray-500"
+                    }`}
+                  />
+                );
+              })}
             </div>
 
             <div className="flex gap-2 md:gap-3">
-              <button
+              <Button
                 onClick={prevProject}
-                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted/50 transition-colors"
+                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-gray-800 transition-colors text-white"
               >
                 <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={nextProject}
-                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted/50 transition-colors"
+                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-gray-800 transition-colors text-white"
               >
                 <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>

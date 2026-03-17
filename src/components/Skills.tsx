@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { createMagneticEffect } from '@/lib/gsap';
+import { Lightning, Wrench, Bot } from 'lucide-react';
 
 const skills = [
   { name: "Next.js", category: "Frontend", level: 95 },
@@ -126,24 +127,24 @@ const Skills = () => {
             {
               title: "Frontend Mastery",
               description: "Building performant, accessible UIs with React and Next.js",
-              icon: "⚡",
+              icon: <Lightning className="text-primary w-8 h-8" />,
             },
             {
               title: "Backend Architecture",
               description: "Scalable APIs and microservices with Node.js",
-              icon: "🔧",
+              icon: <Wrench className="text-primary w-8 h-8" />,
             },
             {
               title: "AI Integration",
               description: "Implementing intelligent automation workflows",
-              icon: "🤖",
+              icon: <Bot className="text-primary w-8 h-8" />,
             },
           ].map((item, i) => (
             <div
               key={i}
               className="glass-card p-6 group hover:border-primary/30 transition-all duration-500"
             >
-              <div className="text-4xl mb-4">{item.icon}</div>
+              <div className="mb-4">{item.icon}</div>
               <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                 {item.title}
               </h3>

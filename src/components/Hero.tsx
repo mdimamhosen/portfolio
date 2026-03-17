@@ -3,7 +3,7 @@ import { gsap } from '@/lib/gsap';
 
 const typewriterTexts = [
   "Building intelligent AI agents that automate complex workflows",
-  "Crafting cross-platform mobile apps with React Native & Expo",
+  "Crafting cross-platform mobile apps with React Native, Flutter & Expo",
   "Designing scalable backends with Go, Node.js & PostgreSQL",
   "Integrating LLMs and custom AI models into production systems",
   "Creating real-time applications with WebSocket & Socket.io",

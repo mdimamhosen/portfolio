@@ -1,21 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
+import { Smartphone, Bot, Wrench } from 'lucide-react';
 
 const expertiseAreas = [
   {
     title: "Mobile App Development",
     description: "Cross-platform apps with React Native & Expo for iOS and Android",
-    icon: "📱",
+    icon: <Smartphone className="text-primary w-8 h-8" />,
   },
   {
     title: "AI Agent Systems",
     description: "Building autonomous agents that reason, plan, and execute complex tasks",
-    icon: "🤖",
+    icon: <Bot className="text-primary w-8 h-8" />,
   },
   {
     title: "Full-Stack Architecture",
     description: "Scalable APIs and microservices with Go, Node.js, and cloud infrastructure",
-    icon: "🔧",
+    icon: <Wrench className="text-primary w-8 h-8" />,
   },
 ];
 

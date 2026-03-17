@@ -3,33 +3,27 @@ import { gsap, ScrollTrigger } from '@/lib/gsap';
 
 const projects = [
   {
-    title: "AI Workflow Engine",
-    description: "Intelligent automation platform processing 10K+ tasks daily with n8n and custom AI models",
-    tech: ["Next.js", "n8n", "OpenAI", "PostgreSQL"],
-    gradient: "from-cyan-500/20 to-blue-600/20",
-    link: "#",
+    title: "EduCoder",
+    description: "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
+    tech: ["Next.js", "Supabase", "TailwindCSS"],
+    gradient: "from-blue-400/20 to-cyan-500/20",
+    link: "https://edu-coder.vercel.app/",
   },
   {
-    title: "Enterprise Dashboard",
-    description: "Real-time analytics dashboard with complex data visualizations and role-based access",
-    tech: ["React", "TypeScript", "D3.js", "Node.js"],
-    gradient: "from-purple-500/20 to-pink-600/20",
-    link: "#",
+    title: "ReviewHub",
+    description: "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
+    tech: ["React", "Node.js", "MongoDB"],
+    gradient: "from-yellow-400/20 to-pink-500/20",
+    link: "https://assignment-9-client-iota.vercel.app/",
   },
   {
-    title: "E2E Testing Suite",
-    description: "Comprehensive Playwright testing framework reducing QA time by 70%",
-    tech: ["Playwright", "TypeScript", "CI/CD", "Docker"],
-    gradient: "from-green-500/20 to-emerald-600/20",
+    title: "BU-Trace",
+    description: "Realtime Bus Tracking system for University of Barishal.",
+    tech: ["React Native", "Firebase", "Map APIs"],
+    gradient: "from-green-400/20 to-blue-500/20",
     link: "#",
   },
-  {
-    title: "API Gateway",
-    description: "High-performance API gateway handling 1M+ requests with intelligent rate limiting",
-    tech: ["Node.js", "Redis", "GraphQL", "Kubernetes"],
-    gradient: "from-orange-500/20 to-red-600/20",
-    link: "#",
-  },
+  // etc etc
 ];
 
 const Projects = () => {
@@ -97,15 +91,14 @@ const Projects = () => {
     >
       <div className="max-w-6xl mx-auto content-overlay">
         {/* Section label */}
-        <p className="text-mono mb-4 opacity-60">03 / Projects</p>
+        <p className="text-mono mb-4 opacity-60">04 / Projects</p>
 
         <div ref={headingRef} className="mb-16">
           <h2 className="text-section">
             Featured <span className="text-primary text-glow">Work</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl">
-            A selection of projects that showcase my expertise in building 
-            scalable, intelligent systems.
+            A selection of projects showcasing expertise in mobile apps, AI agents, and full-stack systems.
           </p>
         </div>
 

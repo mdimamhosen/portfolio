@@ -5,7 +5,7 @@ import { Globe, Layers, Smartphone, Zap, Database, Shield } from 'lucide-react';
 const webCapabilities = [
   {
     icon: Smartphone,
-    title: "Mobile Apps (Expo)",
+    title: "Mobile Apps ",
     description: "Cross-platform iOS & Android apps with React Native and Expo",
   },
   {

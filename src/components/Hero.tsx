@@ -114,7 +114,7 @@ const Hero = ({ onViewProjects, onContact }: HeroProps) => {
       {/* Content */}
       <div className="content-overlay text-center max-w-5xl mx-auto">
         {/* Label */}
-        <p className="text-mono mb-4 md:mb-8 opacity-40 text-xs sm:text-sm">Web App & AI Agent Developer</p>
+        <p className="text-mono mb-4 md:mb-8 opacity-40 text-xs sm:text-sm">Software Engineer | Web, Mobile & AI Agents</p>
 
         {/* Name */}
         <h1 ref={nameRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter mb-4 md:mb-6">

@@ -10,6 +10,13 @@ const projects = [
     link: "https://edu-coder.vercel.app/",
   },
   {
+    title: "GreenBasket",
+    description: "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
+    tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
+    gradient: "from-green-500/20 to-emerald-600/20",
+    link: "https://greenbasket-six.vercel.app/",
+  },
+  {
     title: "ReviewHub",
     description: "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
     tech: ["React", "Node.js", "MongoDB"],

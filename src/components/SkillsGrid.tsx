@@ -17,7 +17,7 @@ const skillCategories = [
   },
   {
     title: "Cloud & Tools",
-    skills: ["Cloudinary", "Docker", "n8n Automation", "AI Workflows", "Playwright"]
+    skills: ["AWS", "Docker", "Git/GitHub", "n8n Automation", "AI Workflows", "Playwright"]
   }
 ];
 

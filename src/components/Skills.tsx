@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { createMagneticEffect } from '@/lib/gsap';
-import { Lightning, Wrench, Bot } from 'lucide-react';
+import { Zap, Wrench, Bot } from 'lucide-react';
 
 const skills = [
   { name: "Next.js", category: "Frontend", level: 95 },
@@ -13,6 +13,7 @@ const skills = [
   { name: "AI Workflows", category: "AI", level: 90 },
   { name: "API Engineering", category: "Backend", level: 88 },
   { name: "PostgreSQL", category: "Database", level: 85 },
+  { name: "Flutter", category: "Mobile", level: 92 },
   { name: "Docker", category: "DevOps", level: 80 },
   { name: "Python", category: "Language", level: 82 },
   { name: "GraphQL", category: "API", level: 78 },
@@ -127,7 +128,7 @@ const Skills = () => {
             {
               title: "Frontend Mastery",
               description: "Building performant, accessible UIs with React and Next.js",
-              icon: <Lightning className="text-primary w-8 h-8" />,
+              icon: <Zap className="text-primary w-8 h-8" />,
             },
             {
               title: "Backend Architecture",

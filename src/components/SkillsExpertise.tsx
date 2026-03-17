@@ -5,7 +5,7 @@ import { Smartphone, Bot, Wrench } from 'lucide-react';
 const expertiseAreas = [
   {
     title: "Mobile App Development",
-    description: "Cross-platform apps with React Native & Expo for iOS and Android",
+    description: "Cross-platform apps with Flutter, React Native & Expo for iOS and Android",
     icon: <Smartphone className="text-primary w-8 h-8" />,
   },
   {
@@ -15,7 +15,7 @@ const expertiseAreas = [
   },
   {
     title: "Full-Stack Architecture",
-    description: "Scalable APIs and microservices with Go, Node.js, and cloud infrastructure",
+    description: "Cloud-native architecture with AWS, Docker, Go, and scalable microservices",
     icon: <Wrench className="text-primary w-8 h-8" />,
   },
 ];

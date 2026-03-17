@@ -88,15 +88,14 @@ const About = () => {
               className="space-y-4 md:space-y-6 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed"
             >
               <p>
-                I'm a Web App, Mobile App (Flutter, React Native), & AI Agent
-                Developer specializing in building intelligent, scalable systems
-                that transform how businesses operate.
+                I'm a Software Engineer specializing in building intelligent,
+                scalable systems across Web, Mobile (Flutter, React Native), and
+                Cloud infrastructure.
               </p>
               <p>
-                With expertise in Flutter, React Native Expo for mobile apps,
-                modern web frameworks, and agentic AI systems, I bridge the gap
-                between innovative AI solutions and production-ready
-                applications.
+                With expertise in full-stack development, mobile architecture,
+                and DevOps practices, I bridge the gap between innovative AI
+                solutions and robust, production-ready applications.
               </p>
             </div>
 
@@ -136,24 +135,24 @@ const About = () => {
                 <div className="pl-4 sm:pl-6">
                   <span className="opacity-60">role:</span>{" "}
                   <span className="text-foreground">
-                    "Web App & AI Agent Dev"
+                    "Software Engineer"
                   </span>
                   ,
                 </div>
                 <div className="pl-4 sm:pl-6">
                   <span className="opacity-60">passion:</span>{" "}
-                  <span className="text-foreground">"Agentic AI Systems"</span>,
+                  <span className="text-foreground">"Software Engineering"</span>,
                 </div>
                 <div className="pl-4 sm:pl-6">
                   <span className="opacity-60">focus:</span>{" "}
                   <span className="text-foreground/70">[</span>
                 </div>
                 <div className="pl-8 sm:pl-10 text-foreground text-xs sm:text-sm">
-                  "AI Agents",
+                  "AI & Automation",
                   <br />
-                  "Mobile Apps",
+                  "Mobile & Web",
                   <br />
-                  "Full-Stack Web"
+                  "DevOps & Cloud"
                 </div>
                 <div className="pl-4 sm:pl-6">
                   <span className="text-foreground/70">]</span>

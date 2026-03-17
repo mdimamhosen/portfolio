@@ -30,6 +30,14 @@ const projects = [
     link: "https://edu-coder.vercel.app/",
   },
   {
+    title: "GreenBasket",
+    description:
+      "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
+    tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
+    gradient: "from-green-500/20 to-emerald-600/20",
+    link: "https://greenbasket-six.vercel.app/",
+  },
+  {
     title: "ReviewHub",
     description:
       "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
@@ -200,13 +208,13 @@ const ProjectSlider = () => {
             <div className="flex gap-2 md:gap-3">
               <Button
                 onClick={prevProject}
-                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-gray-800 transition-colors text-white"
+                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gray-700 flex items-center justify-center  bg-gray-800 transition-colors text-primary"
               >
                 <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
               <Button
                 onClick={nextProject}
-                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-gray-800 transition-colors text-white"
+                className="w-9 h-9 md:w-12 md:h-12 rounded-full border border-gray-700 flex items-center justify-center  bg-gray-800 transition-colors text-primary"
               >
                 <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
               </Button>

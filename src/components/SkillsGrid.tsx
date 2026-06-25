@@ -9,15 +9,15 @@ const skillCategories = [
   },
   {
     title: "Backend & APIs",
-    skills: ["Go (Golang)", "Node.js", "Express.js", "Nest.js", "FastAPI", "Python", "GraphQL", "RESTful APIs", "WebSockets", "Socket.io"]
-  },
-  {
-    title: "AI & Automation",
-    skills: ["LangChain", "LlamaIndex", "AI Agents", "RAG Pipelines", "Vector Search", "n8n Automation", "OpenAI/Anthropic APIs", "Twilio Integration", "CRM Integration (HubSpot/Salesforce)"]
+    skills: ["Node.js", "Express.js", "Nest.js", "Go (Golang)", "REST APIs", "FastAPI", "Python", "GraphQL", "WebSockets", "Socket.io", "Nodemailer"]
   },
   {
     title: "Database & Cloud",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "Pinecone / ChromaDB", "Supabase", "Prisma ORM", "Docker", "AWS (S3, EC2)", "Git/GitHub", "CI/CD Pipelines"]
+    skills: ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM", "Mongoose", "RTK Query", "AWS", "Docker", "Git/GitHub", "CI/CD Pipelines"]
+  },
+  {
+    title: "AI & Integrations",
+    skills: ["LangChain", "LlamaIndex", "AI Agents", "RAG Pipelines", "Vector Databases", "HubSpot CRM", "Salesforce CRM", "Square Integration", "Twilio API", "Stripe API"]
   }
 ];
 

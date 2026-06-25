@@ -18,7 +18,7 @@ const timelineSteps = [
   {
     step: "03",
     title: "Workflow Orchestration",
-    description: "Complex n8n workflows with conditional logic",
+    description: "Complex CRM workflows with conditional logic",
     icon: GitBranch,
   },
   {

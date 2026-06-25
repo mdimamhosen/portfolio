@@ -18,7 +18,7 @@ const automationSteps = [
   {
     step: "03",
     title: "Workflow Automation",
-    description: "n8n powered task orchestration",
+    description: "CRM & system integration flows",
     icon: Cog,
   },
   {
@@ -114,7 +114,7 @@ const Automation = () => {
           Workflow <span className="text-primary text-glow">Automation</span>
         </h2>
         <p ref={subtitleRef} className="text-muted-foreground mb-6 md:mb-10 max-w-2xl text-xs sm:text-sm md:text-base text-center lg:text-left">
-          Connecting your systems, databases, and APIs with smart n8n workflows and AI-driven automation pipelines.
+          Connecting your systems, databases, and APIs with smart CRM integrations and AI-driven automation pipelines.
         </p>
 
         {/* Timeline Steps */}

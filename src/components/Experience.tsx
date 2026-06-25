@@ -4,19 +4,6 @@ import { Briefcase, Calendar, MapPin, Code, ChevronRight, Award } from "lucide-r
 
 const experiences = [
   {
-    company: "Upwork",
-    role: "Freelancer (Top Rated)",
-    location: "Remote",
-    period: "January 2026 - Present",
-    isFreelance: true,
-    technologies: ["AI Agents", "Redis", "Socket.io", "Twilio", "CRM Integration", "Next.js", "LangChain"],
-    highlights: [
-      "Maintained Top Rated status by delivering high-impact AI agents, CRM system integrations, and full-stack solutions for global clients.",
-      "Developed real-time applications with Socket.io and Redis for low-latency communication and event-driven data synchronization.",
-      "Built and deployed custom workflow automations connecting HubSpot/Salesforce CRMs, Twilio, and LLM backends."
-    ]
-  },
-  {
     company: "Hashthink Technologies",
     role: "Software Engineer",
     location: "Canada (Remote)",
@@ -27,6 +14,19 @@ const experiences = [
       "Engineered advanced Retrieval-Augmented Generation (RAG) pipelines and LLM-powered multi-agent systems using LangChain.",
       "Designed and integrated real-time communication modules, webhook endpoints, and live chat features using Twilio and Socket.io.",
       "Integrated custom CRM pipelines with autonomous AI agents to automate customer lead classification and routing workflows."
+    ]
+  },
+  {
+    company: "Upwork",
+    role: "Freelancer (Top Rated)",
+    location: "Remote",
+    period: "January 2026 - Present",
+    isFreelance: true,
+    technologies: ["AI Agents", "Redis", "Socket.io", "Twilio", "CRM Integration", "Next.js", "LangChain"],
+    highlights: [
+      "Maintained Top Rated status by delivering high-impact AI agents, CRM system integrations, and full-stack solutions for global clients.",
+      "Developed real-time applications with Socket.io and Redis for low-latency communication and event-driven data synchronization.",
+      "Built and deployed custom workflow automations connecting HubSpot/Salesforce CRMs, Twilio, and LLM backends."
     ]
   },
   {
@@ -113,8 +113,8 @@ const Experience = () => {
           </p>
         </div>
 
-        {/* Responsive Cards Grid - Scrollable on mobile to prevent overflow */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 overflow-y-auto max-h-[50vh] sm:max-h-[55vh] md:max-h-none scrollbar-hide py-2 pr-1">
+        {/* Responsive Cards Grid - Scrollable to prevent overflow */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 overflow-y-auto max-h-[50vh] sm:max-h-[55vh] md:max-h-[60vh] scrollbar-hide py-2 pr-1">
           {experiences.map((exp, i) => (
             <div
               key={exp.company}

@@ -139,8 +139,7 @@ const ProjectSlider = () => {
             Featured <span className="text-primary text-glow">Work</span>
           </h2>
           <p className="text-muted-foreground mt-2 md:mt-4 max-w-xl text-sm md:text-base">
-            A selection of projects showcasing expertise in mobile apps, AI
-            agents, and full-stack systems.
+            A selection of projects showcasing expertise in full-stack web applications, AI agents, and workflow automations.
           </p>
         </div>
 

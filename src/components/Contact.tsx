@@ -19,17 +19,19 @@ const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        headingRef.current,
+        [headingRef.current, subtitleRef.current],
         { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
+          stagger: 0.1,
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
@@ -129,16 +131,20 @@ const Contact = () => {
     >
       <div className="max-w-none mx-auto content-overlay h-full flex items-center">
         <div className="w-full">
-          <p className="text-mono mb-4 md:mb-6 opacity-40 text-xs sm:text-sm">
+          <p className="text-mono mb-2 opacity-40 text-xs sm:text-sm">
             09 / Contact
           </p>
 
           <h2
             ref={headingRef}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4"
           >
             Let's Work Together
           </h2>
+          
+          <p ref={subtitleRef} className="text-muted-foreground mb-8 md:mb-12 max-w-2xl text-xs sm:text-sm md:text-base">
+            Feel free to reach out for project proposals, collaboration opportunities, or just to say hello.
+          </p>
 
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Info */}

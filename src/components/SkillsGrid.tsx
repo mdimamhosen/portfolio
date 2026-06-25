@@ -13,7 +13,7 @@ const skillCategories = [
   },
   {
     title: "AI & Automation",
-    skills: ["LangChain", "LlamaIndex", "AI Agents", "RAG Pipelines", "Vector Search", "n8n Automation", "OpenAI/Anthropic APIs", "Twilio Integration"]
+    skills: ["LangChain", "LlamaIndex", "AI Agents", "RAG Pipelines", "Vector Search", "n8n Automation", "OpenAI/Anthropic APIs", "Twilio Integration", "CRM Integration (HubSpot/Salesforce)"]
   },
   {
     title: "Database & Cloud",

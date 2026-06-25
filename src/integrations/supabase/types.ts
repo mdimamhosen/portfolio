@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      peer_presence: {
+        Row: {
+          avatar: string
+          device_name: string
+          peer_id: string
+          room_code: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar: string
+          device_name: string
+          peer_id: string
+          room_code?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar?: string
+          device_name?: string
+          peer_id?: string
+          room_code?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      shared_files: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_size: number
+          file_type: string
+          id: string
+          receiver_name: string | null
+          sender_name: string | null
+          storage_path: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_size: number
+          file_type: string
+          id?: string
+          receiver_name?: string | null
+          sender_name?: string | null
+          storage_path: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_size?: number
+          file_type?: string
+          id?: string
+          receiver_name?: string | null
+          sender_name?: string | null
+          storage_path?: string
+        }
+        Relationships: []
+      }
       visitors: {
         Row: {
           city: string | null

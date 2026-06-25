@@ -89,7 +89,7 @@ const About = () => {
             >
               <p>
                 I'm a Software Engineer specializing in building intelligent,
-                scalable systems across Web, Mobile (Flutter, React Native), and
+                scalable systems across Web applications, Backend systems, and
                 Cloud infrastructure.
               </p>
               <p>
@@ -150,7 +150,7 @@ const About = () => {
                 <div className="pl-8 sm:pl-10 text-foreground text-xs sm:text-sm">
                   "AI & Automation",
                   <br />
-                  "Mobile & Web",
+                  "Web & Backend",
                   <br />
                   "DevOps & Cloud"
                 </div>

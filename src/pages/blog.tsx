@@ -10,8 +10,8 @@ const Blog = () => {
         <a href="#" className="text-primary hover:underline">Read more</a>
       </article>
       <article className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Building Cross-Platform Mobile Apps with Flutter & React Native</h2>
-        <p className="text-muted-foreground mb-2">A practical guide to modern mobile development for startups and enterprises.</p>
+        <h2 className="text-xl font-semibold mb-2">Mastering Full-Stack Web Development with React & Go</h2>
+        <p className="text-muted-foreground mb-2">A practical guide to building highly performant, type-safe web applications from front to back.</p>
         <a href="#" className="text-primary hover:underline">Read more</a>
       </article>
       <article>

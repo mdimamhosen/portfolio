@@ -5,6 +5,15 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
 
 const projects = [
+    {
+      title: "GreenBasket",
+      description:
+        "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
+      tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
+      gradient: "from-green-500/20 to-emerald-600/20",
+      link: "https://greenbasket-six.vercel.app/",
+      cta: "Visit GreenBasket",
+    },
   {
     title: "LeafCare Ai",
     description:
@@ -12,6 +21,7 @@ const projects = [
     tech: ["Next.js", "TensorFlow", "TailwindCSS", "AI"],
     gradient: "from-green-400/20 to-lime-500/20",
     link: "https://leafcareai-ruddy.vercel.app/",
+    cta: "Visit LeafCare AI",
   },
   {
     title: "TreLux",
@@ -20,6 +30,7 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB", "Stripe"],
     gradient: "from-blue-500/20 to-indigo-600/20",
     link: "https://trelux.vercel.app/",
+    cta: "Visit TreLux",
   },
   {
     title: "EduCoder",
@@ -28,6 +39,7 @@ const projects = [
     tech: ["Next.js", "Supabase", "TailwindCSS"],
     gradient: "from-blue-400/20 to-cyan-500/20",
     link: "https://edu-coder.vercel.app/",
+    cta: "Visit EduCoder",
   },
   {
     title: "GreenBasket",
@@ -36,6 +48,7 @@ const projects = [
     tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
     gradient: "from-green-500/20 to-emerald-600/20",
     link: "https://greenbasket-six.vercel.app/",
+    cta: "Visit GreenBasket",
   },
   {
     title: "ReviewHub",
@@ -44,6 +57,7 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB"],
     gradient: "from-yellow-400/20 to-pink-500/20",
     link: "https://assignment-9-client-iota.vercel.app/",
+    cta: "Visit ReviewHub",
   },
   {
     title: "BU-Trace",
@@ -119,7 +133,7 @@ const ProjectSlider = () => {
       <div className="max-w-6xl mx-auto w-full content-overlay">
         <div ref={headingRef} className="mb-6 md:mb-10">
           <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">
-            04 / Projects
+            05 / Projects
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
             Featured <span className="text-primary text-glow">Work</span>
@@ -171,10 +185,13 @@ const ProjectSlider = () => {
 
               {/* Modal for website preview */}
               {project.link && project.link !== "#" && (
-                <Dialog open={open} onOpenChange={(val) => {
-                  setOpen(val);
-                  if (val) setLoading(true);
-                }}>
+                <Dialog
+                  open={open}
+                  onOpenChange={(val) => {
+                    setOpen(val);
+                    if (val) setLoading(true);
+                  }}
+                >
                   <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-0 overflow-hidden border-white/10 bg-black/80 backdrop-blur-xl flex flex-col">
                     <div className="flex items-center justify-between p-4 border-b border-white/10 bg-black/40">
                       <div className="flex items-center gap-3">
@@ -182,22 +199,24 @@ const ProjectSlider = () => {
                         <div className="w-2 h-2 rounded-full bg-yellow-500" />
                         <div className="w-2 h-2 rounded-full bg-green-500" />
                       </div>
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
+                      <a
+                        href={project.link}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-xs font-medium text-primary hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-full border border-white/10"
                       >
                         <ExternalLink className="w-3 h-3" />
-                        Open Original
+                        {project.cta || "View Project"}
                       </a>
                     </div>
-                    
+
                     <div className="flex-1 relative bg-white">
                       {loading && (
                         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-20">
                           <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
-                          <p className="text-sm font-mono text-primary/60">Establishing secure connection...</p>
+                          <p className="text-sm font-mono text-primary/60">
+                            Establishing secure connection...
+                          </p>
                         </div>
                       )}
                       <iframe

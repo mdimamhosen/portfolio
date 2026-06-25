@@ -13,7 +13,7 @@ const skills = [
   { name: "AI Workflows", category: "AI", level: 90 },
   { name: "API Engineering", category: "Backend", level: 88 },
   { name: "PostgreSQL", category: "Database", level: 85 },
-  { name: "Flutter", category: "Mobile", level: 92 },
+  { name: "Go", category: "Backend", level: 90 },
   { name: "Docker", category: "DevOps", level: 80 },
   { name: "Python", category: "Language", level: 82 },
   { name: "GraphQL", category: "API", level: 78 },

@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
-import { Smartphone, Bot, Wrench } from 'lucide-react';
+import { Cpu, Bot, Wrench } from 'lucide-react';
 
 const expertiseAreas = [
   {
-    title: "Mobile App Development",
-    description: "Cross-platform apps with Flutter, React Native & Expo for iOS and Android",
-    icon: <Smartphone className="text-primary w-8 h-8" />,
+    title: "API & System Integration",
+    description: "Designing robust, secure RESTful APIs and real-time WebSocket communication flows",
+    icon: <Cpu className="text-primary w-8 h-8" />,
   },
   {
     title: "AI Agent Systems",
@@ -66,7 +66,7 @@ const SkillsExpertise = () => {
   return (
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full content-overlay">
-        <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">03 / Expertise</p>
+        <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">04 / Expertise</p>
         <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-12 text-center lg:text-left">
           Core <span className="text-primary text-glow">Strengths</span>
         </h2>

@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
-import { Globe, Layers, Smartphone, Zap, Database, Shield } from 'lucide-react';
+import { Globe, Layers, Server, Zap, Database, Shield } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const webCapabilities = [
   {
-    icon: Smartphone,
-    title: "Mobile Apps ",
-    description: "Cross-platform iOS & Android apps with React Native and Expo",
+    icon: Server,
+    title: "Cloud Deployments",
+    description: "Deploying high-availability applications with Docker, AWS, and modern CI/CD",
   },
   {
     icon: Globe,
@@ -36,6 +38,7 @@ const webCapabilities = [
 ];
 
 const WebAppShowcase = () => {
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -80,14 +83,19 @@ const WebAppShowcase = () => {
   return (
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full content-overlay">
-        <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">08 / Web & Mobile Apps</p>
+        <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">08 / Web Applications</p>
         <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center lg:text-left">
-          Web & Mobile <span className="text-primary text-glow">Applications</span>
+          Web <span className="text-primary text-glow">Applications</span>
         </h2>
         <p className="text-muted-foreground mb-4 md:mb-8 max-w-2xl text-xs sm:text-sm md:text-base">
-          Crafting modern web and mobile experiences that combine stunning design 
+          Crafting modern web experiences that combine stunning design 
           with robust engineering for scalable, production-ready applications.
         </p>
+        <div className="mb-4 md:mb-8">
+          <Button onClick={() => navigate("/share")} className="bg-primary text-primary-foreground hover:opacity-90">
+            Launch P2P Share App
+          </Button>
+        </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
           {webCapabilities.map((item, i) => (

@@ -5,7 +5,7 @@ import { createMagneticEffect } from '@/lib/gsap';
 const skillCategories = [
   {
     title: "Frontend",
-    skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "React Native", "Flutter", "Expo", "TypeScript", "Redux", "Next.js", "Zustand"]
+    skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "TypeScript", "Redux", "Next.js", "Zustand"]
   },
   {
     title: "Backend",
@@ -78,7 +78,7 @@ const SkillsGrid = () => {
   return (
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full content-overlay">
-        <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">02 / Skills</p>
+        <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">03 / Skills</p>
         <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center lg:text-left">
           Tech <span className="text-primary text-glow">Stack</span>
         </h2>

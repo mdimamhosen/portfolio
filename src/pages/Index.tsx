@@ -4,6 +4,7 @@ import Scene from "@/components/Scene";
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import SkillsGrid from "@/components/SkillsGrid";
 import SkillsExpertise from "@/components/SkillsExpertise";
 import ProjectSlider from "@/components/ProjectSlider";
@@ -16,6 +17,7 @@ import { useVisitorTracking } from "@/hooks/useVisitorTracking";
 const sections = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "skills-expertise", label: "Expertise" },
   { id: "projects", label: "Projects" },
@@ -115,6 +117,12 @@ const Index = () => {
         <section id="about" className="panel">
           <div className="panel-content h-full">
             <About />
+          </div>
+        </section>
+
+        <section id="experience" className="panel">
+          <div className="panel-content h-full">
+            <Experience />
           </div>
         </section>
 

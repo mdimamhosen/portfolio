@@ -3,7 +3,7 @@ import { gsap } from '@/lib/gsap';
 
 const typewriterTexts = [
   "Building intelligent AI agents that automate complex workflows",
-  "Crafting cross-platform mobile apps with React Native, Flutter & Expo",
+  "Developing scalable, modern web applications with React, Next.js & Go",
   "Designing scalable backends with Go, Node.js & PostgreSQL",
   "Integrating LLMs and custom AI models into production systems",
   "Creating real-time applications with WebSocket & Socket.io",
@@ -114,7 +114,7 @@ const Hero = ({ onViewProjects, onContact }: HeroProps) => {
       {/* Content */}
       <div className="content-overlay text-center max-w-5xl mx-auto">
         {/* Label */}
-        <p className="text-mono mb-4 md:mb-8 opacity-40 text-xs sm:text-sm">Software Engineer | Web, Mobile & AI Agents</p>
+        <p className="text-mono mb-4 md:mb-8 opacity-40 text-xs sm:text-sm">Software Engineer | Web, Backend & AI Agents</p>
 
         {/* Name */}
         <h1 ref={nameRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter mb-4 md:mb-6">

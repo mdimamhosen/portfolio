@@ -1,27 +1,33 @@
-import { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '@/lib/gsap';
+import { useEffect, useRef } from "react";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 const projects = [
   {
     title: "EduCoder",
-    description: "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
+    description:
+      "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
     tech: ["Next.js", "Supabase", "TailwindCSS"],
     gradient: "from-blue-400/20 to-cyan-500/20",
     link: "https://edu-coder.vercel.app/",
+    cta: "Visit EduCoder",
   },
   {
     title: "GreenBasket",
-    description: "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
+    description:
+      "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
     tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
     gradient: "from-green-500/20 to-emerald-600/20",
     link: "https://greenbasket-six.vercel.app/",
+    cta: "Visit GreenBasket",
   },
   {
     title: "ReviewHub",
-    description: "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
+    description:
+      "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
     tech: ["React", "Node.js", "MongoDB"],
     gradient: "from-yellow-400/20 to-pink-500/20",
     link: "https://assignment-9-client-iota.vercel.app/",
+    cta: "Visit ReviewHub",
   },
   {
     title: "BU-Trace",
@@ -54,7 +60,7 @@ const Projects = () => {
             trigger: sectionRef.current,
             start: "top 60%",
           },
-        }
+        },
       );
 
       // Projects stagger with depth effect
@@ -82,7 +88,7 @@ const Projects = () => {
                 toggleActions: "play none none reverse",
               },
               delay: i * 0.1,
-            }
+            },
           );
         }
       });
@@ -105,15 +111,13 @@ const Projects = () => {
             Featured <span className="text-primary text-glow">Work</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl">
-            A selection of projects showcasing expertise in mobile apps, AI agents, and full-stack systems.
+            A selection of projects showcasing expertise in mobile apps, AI
+            agents, and full-stack systems.
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div
-          ref={projectsContainerRef}
-          className="grid md:grid-cols-2 gap-6"
-        >
+        <div ref={projectsContainerRef} className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <div
               key={project.title}
@@ -181,9 +185,7 @@ const Projects = () => {
 
         {/* View all link */}
         <div className="mt-12 text-center">
-          <button className="btn-outline">
-            View All Projects
-          </button>
+          <button className="btn-outline">View All Projects</button>
         </div>
       </div>
     </section>

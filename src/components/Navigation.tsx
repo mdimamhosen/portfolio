@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from '@/lib/gsap';
 import LogoIcon from './LogoIcon';
-import { X, Home, User, Code, Layers, Bot, Smartphone, Mail } from 'lucide-react';
+import { X, Home, User, Briefcase, Code, Layers, Bot, Globe, Mail } from 'lucide-react';
 
 const navItems = [
   { label: "About", href: "#about", icon: User },
+  { label: "Experience", href: "#experience", icon: Briefcase },
   { label: "Skills", href: "#skills", icon: Code },
   { label: "Projects", href: "#projects", icon: Layers },
   { label: "AI Agents", href: "#ai-agents", icon: Bot },
-  { label: "Web Apps", href: "#web-apps", icon: Smartphone },
+  { label: "Web Apps", href: "#web-apps", icon: Globe },
   { label: "Contact", href: "#contact", icon: Mail },
 ];
 

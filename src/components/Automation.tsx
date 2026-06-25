@@ -107,7 +107,7 @@ const Automation = () => {
   return (
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full content-overlay">
-        <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">05 / Automation</p>
+        <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">06 / Automation</p>
         <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center lg:text-left">
           Workflow <span className="text-primary text-glow">Automation</span>
         </h2>

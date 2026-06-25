@@ -5,36 +5,38 @@ import { createMagneticEffect } from '@/lib/gsap';
 const skillCategories = [
   {
     title: "Frontend",
-    skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "TypeScript", "Redux", "Next.js", "Zustand"]
+    skills: ["HTML5", "CSS3", "Tailwind CSS", "TypeScript", "JavaScript (ES6+)", "React", "Next.js", "Redux Toolkit", "Zustand", "Shadcn UI", "Framer Motion"]
   },
   {
-    title: "Backend",
-    skills: ["Node.js", "Express.js", "Nest.js", "Go", "REST APIs", "Socket.io", "Nodemailer"]
+    title: "Backend & APIs",
+    skills: ["Go (Golang)", "Node.js", "Express.js", "Nest.js", "FastAPI", "Python", "GraphQL", "RESTful APIs", "WebSockets", "Socket.io"]
   },
   {
-    title: "Database",
-    skills: ["PostgreSQL", "MongoDB", "Prisma", "Mongoose", "RTK Query"]
+    title: "AI & Automation",
+    skills: ["LangChain", "LlamaIndex", "AI Agents", "RAG Pipelines", "Vector Search", "n8n Automation", "OpenAI/Anthropic APIs", "Twilio Integration"]
   },
   {
-    title: "Cloud & Tools",
-    skills: ["AWS", "Docker", "Git/GitHub", "n8n Automation", "AI Workflows", "Playwright"]
+    title: "Database & Cloud",
+    skills: ["PostgreSQL", "MongoDB", "Redis", "Pinecone / ChromaDB", "Supabase", "Prisma ORM", "Docker", "AWS (S3, EC2)", "Git/GitHub", "CI/CD Pipelines"]
   }
 ];
 
 const SkillsGrid = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const categoryRefs = useRef<(HTMLDivElement | null)[]>([]);
   const skillRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 60 },
+        [headingRef.current, subtitleRef.current],
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
+          stagger: 0.1,
           duration: 1,
           ease: "power4.out",
           scrollTrigger: {
@@ -77,13 +79,18 @@ const SkillsGrid = () => {
 
   return (
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto w-full content-overlay">
-        <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">03 / Skills</p>
-        <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center lg:text-left">
-          Tech <span className="text-primary text-glow">Stack</span>
-        </h2>
+      <div className="max-w-6xl mx-auto w-full content-overlay flex flex-col h-full max-h-[85vh] justify-center">
+        <div>
+          <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">03 / Skills</p>
+          <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center lg:text-left">
+            Tech <span className="text-primary text-glow">Stack</span>
+          </h2>
+          <p ref={subtitleRef} className="text-muted-foreground mb-6 md:mb-10 max-w-2xl text-xs sm:text-sm md:text-base text-center lg:text-left">
+            A comprehensive view of the languages, frameworks, databases, and automated tools that drive my development stack.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-6 overflow-y-auto max-h-[50vh] sm:max-h-none scrollbar-hide py-1">
           {skillCategories.map((category, catIndex) => (
             <div
               key={category.title}

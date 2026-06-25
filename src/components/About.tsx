@@ -4,17 +4,19 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        headingRef.current,
+        [headingRef.current, subtitleRef.current],
         { opacity: 0, x: -60 },
         {
           opacity: 1,
           x: 0,
+          stagger: 0.1,
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
@@ -77,11 +79,15 @@ const About = () => {
 
             <h2
               ref={headingRef}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-10"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 md:mb-4"
             >
               Building the <br />
               <span className="text-foreground">Future</span>
             </h2>
+
+            <p ref={subtitleRef} className="text-primary/70 mb-6 md:mb-8 font-medium text-xs sm:text-sm md:text-base">
+              Software engineering focused on AI agent systems, full stack development, and web automation.
+            </p>
 
             <div
               ref={contentRef}

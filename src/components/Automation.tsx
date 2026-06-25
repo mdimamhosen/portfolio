@@ -39,17 +39,19 @@ const stats = [
 const Automation = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
   const statsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        headingRef.current,
+        [headingRef.current, subtitleRef.current],
         { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
+          stagger: 0.1,
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
@@ -108,9 +110,12 @@ const Automation = () => {
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full content-overlay">
         <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">06 / Automation</p>
-        <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center lg:text-left">
+        <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center lg:text-left">
           Workflow <span className="text-primary text-glow">Automation</span>
         </h2>
+        <p ref={subtitleRef} className="text-muted-foreground mb-6 md:mb-10 max-w-2xl text-xs sm:text-sm md:text-base text-center lg:text-left">
+          Connecting your systems, databases, and APIs with smart n8n workflows and AI-driven automation pipelines.
+        </p>
 
         {/* Timeline Steps */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 mb-4 md:mb-8">

@@ -23,16 +23,18 @@ const expertiseAreas = [
 const SkillsExpertise = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 60 },
+        [headingRef.current, subtitleRef.current],
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
+          stagger: 0.1,
           duration: 1,
           ease: "power4.out",
           scrollTrigger: {
@@ -67,9 +69,12 @@ const SkillsExpertise = () => {
     <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full content-overlay">
         <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">04 / Expertise</p>
-        <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-12 text-center lg:text-left">
+        <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center lg:text-left">
           Core <span className="text-primary text-glow">Strengths</span>
         </h2>
+        <p ref={subtitleRef} className="text-muted-foreground mb-6 md:mb-10 max-w-2xl text-xs sm:text-sm md:text-base text-center lg:text-left">
+          Specialized focus areas where I bring deep technical knowledge and delivery experience.
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
           {expertiseAreas.map((item, i) => (

@@ -16,19 +16,19 @@ const experiences = [
       "Integrated custom CRM pipelines with autonomous AI agents to automate customer lead classification and routing workflows."
     ]
   },
-  {
-    company: "Upwork",
-    role: "Freelancer (Top Rated)",
-    location: "Remote",
-    period: "January 2026 - Present",
-    isFreelance: true,
-    technologies: ["AI Agents", "Redis", "Socket.io", "Twilio", "CRM Integration", "Next.js", "LangChain"],
-    highlights: [
-      "Maintained Top Rated status by delivering high-impact AI agents, CRM system integrations, and full-stack solutions for global clients.",
-      "Developed real-time applications with Socket.io and Redis for low-latency communication and event-driven data synchronization.",
-      "Built and deployed custom workflow automations connecting HubSpot/Salesforce CRMs, Twilio, and LLM backends."
-    ]
-  },
+  // {
+  //   company: "Upwork",
+  //   role: "Freelancer (Top Rated)",
+  //   location: "Remote",
+  //   period: "January 2026 - Present",
+  //   isFreelance: true,
+  //   technologies: ["AI Agents", "Redis", "Socket.io", "Twilio", "CRM Integration", "Next.js", "LangChain"],
+  //   highlights: [
+  //     "Maintained Top Rated status by delivering high-impact AI agents, CRM system integrations, and full-stack solutions for global clients.",
+  //     "Developed real-time applications with Socket.io and Redis for low-latency communication and event-driven data synchronization.",
+  //     "Built and deployed custom workflow automations connecting HubSpot/Salesforce CRMs, Twilio, and LLM backends."
+  //   ]
+  // },
   {
     company: "RixoTech",
     role: "Full Stack Engineer",

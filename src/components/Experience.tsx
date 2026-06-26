@@ -114,7 +114,7 @@ const Experience = () => {
         </div>
 
         {/* Responsive Cards Grid - Scrollable to prevent overflow */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 overflow-y-auto max-h-[50vh] sm:max-h-[55vh] md:max-h-[60vh] scrollbar-hide py-2 pr-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 overflow-y-auto max-h-[50vh] sm:max-h-[55vh] md:max-h-[60vh] scrollbar-hide py-2 pr-1">
           {experiences.map((exp, i) => (
             <div
               key={exp.company}

@@ -5,15 +5,42 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
 
 const projects = [
-    {
-      title: "GreenBasket",
-      description:
-        "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
-      tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
-      gradient: "from-green-500/20 to-emerald-600/20",
-      link: "https://greenbasket-six.vercel.app/",
-      cta: "Visit GreenBasket",
-    },
+  {
+    title: "ClientServe AI",
+    description:
+      "Developed this autonomous AI customer service agent system while working at Hashthink Technologies. Utilizes Retrieval-Augmented Generation (RAG) to handle voice, SMS, and chat interactions 24/7.",
+    tech: ["AI Agents", "RAG", "LLMs", "Vector DB"],
+    gradient: "from-violet-500/20 to-fuchsia-600/20",
+    link: "https://clientserve.ai/",
+    cta: "Visit ClientServe AI",
+  },
+  {
+    title: "Apeiro",
+    description:
+      "Worked on this brand-experience platform while working at Rixotect. Rebuilt the checkout system and executed the launch campaign, increasing conversions by 38%.",
+    tech: ["Next.js", "React", "TailwindCSS", "CRO"],
+    gradient: "from-red-500/20 to-rose-600/20",
+    link: "https://apeiro.ca/",
+    cta: "Visit Apeiro",
+  },
+  {
+    title: "Protiniyoto",
+    description:
+      "An active, fully-featured e-commerce platform in Bangladesh for gadgets, smart watches, accessories, and home appliances.",
+    tech: ["Next.js", "React", "TailwindCSS", "E-commerce"],
+    gradient: "from-blue-500/20 to-indigo-600/20",
+    link: "https://protiniyoto.com/",
+    cta: "Visit Protiniyoto",
+  },
+  {
+    title: "GreenBasket",
+    description:
+      "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
+    tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
+    gradient: "from-green-500/20 to-emerald-600/20",
+    link: "https://greenbasket-six.vercel.app/",
+    cta: "Visit GreenBasket",
+  },
   {
     title: "LeafCare Ai",
     description:
@@ -40,15 +67,6 @@ const projects = [
     gradient: "from-blue-400/20 to-cyan-500/20",
     link: "https://edu-coder.vercel.app/",
     cta: "Visit EduCoder",
-  },
-  {
-    title: "GreenBasket",
-    description:
-      "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
-    tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
-    gradient: "from-green-500/20 to-emerald-600/20",
-    link: "https://greenbasket-six.vercel.app/",
-    cta: "Visit GreenBasket",
   },
   {
     title: "ReviewHub",

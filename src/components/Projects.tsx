@@ -3,13 +3,31 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 const projects = [
   {
-    title: "EduCoder",
+    title: "ClientServe AI",
     description:
-      "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
-    tech: ["Next.js", "Supabase", "TailwindCSS"],
-    gradient: "from-blue-400/20 to-cyan-500/20",
-    link: "https://edu-coder.vercel.app/",
-    cta: "Visit EduCoder",
+      "Developed this autonomous AI customer service agent system while working at Hashthink Technologies. Utilizes Retrieval-Augmented Generation (RAG) to handle voice, SMS, and chat interactions 24/7.",
+    tech: ["AI Agents", "RAG", "LLMs", "Vector DB"],
+    gradient: "from-violet-500/20 to-fuchsia-600/20",
+    link: "https://clientserve.ai/",
+    cta: "Visit ClientServe AI",
+  },
+  {
+    title: "Apeiro",
+    description:
+      "Worked on this brand-experience platform while working at Rixotect. Rebuilt the checkout system and executed the launch campaign, increasing conversions by 38%.",
+    tech: ["Next.js", "React", "TailwindCSS", "CRO"],
+    gradient: "from-red-500/20 to-rose-600/20",
+    link: "https://apeiro.ca/",
+    cta: "Visit Apeiro",
+  },
+  {
+    title: "Protiniyoto",
+    description:
+      "An active, fully-featured e-commerce platform in Bangladesh for gadgets, smart watches, accessories, and home appliances.",
+    tech: ["Next.js", "React", "TailwindCSS", "E-commerce"],
+    gradient: "from-blue-500/20 to-indigo-600/20",
+    link: "https://protiniyoto.com/",
+    cta: "Visit Protiniyoto",
   },
   {
     title: "GreenBasket",
@@ -19,6 +37,33 @@ const projects = [
     gradient: "from-green-500/20 to-emerald-600/20",
     link: "https://greenbasket-six.vercel.app/",
     cta: "Visit GreenBasket",
+  },
+  {
+    title: "LeafCare Ai",
+    description:
+      "AI Based tree diseases detection platform for farmers and researchers.",
+    tech: ["Next.js", "TensorFlow", "TailwindCSS", "AI"],
+    gradient: "from-green-400/20 to-lime-500/20",
+    link: "https://leafcareai-ruddy.vercel.app/",
+    cta: "Visit LeafCare AI",
+  },
+  {
+    title: "TreLux",
+    description:
+      "E-Commerce Mens shopping website with modern UI and seamless checkout.",
+    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    gradient: "from-blue-500/20 to-indigo-600/20",
+    link: "https://trelux.vercel.app/",
+    cta: "Visit TreLux",
+  },
+  {
+    title: "EduCoder",
+    description:
+      "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
+    tech: ["Next.js", "Supabase", "TailwindCSS"],
+    gradient: "from-blue-400/20 to-cyan-500/20",
+    link: "https://edu-coder.vercel.app/",
+    cta: "Visit EduCoder",
   },
   {
     title: "ReviewHub",
@@ -36,7 +81,6 @@ const projects = [
     gradient: "from-green-400/20 to-blue-500/20",
     link: "#",
   },
-  // etc etc
 ];
 
 const Projects = () => {

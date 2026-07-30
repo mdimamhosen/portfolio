@@ -1,16 +1,16 @@
 {
-  "name": "SwiftDrop P2P Share",
-  "short_name": "SwiftDrop",
-  "start_url": "/share",
+  "name": "Md. Imam Hosen Portfolio",
+  "short_name": "Imam Hosen",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#05070d",
   "theme_color": "#0ea5e9",
-  "description": "Modern peer-to-peer file sharing with radar discovery.",
+  "description": "Portfolio of Md. Imam Hosen – AI Agent, Web & Mobile App Developer.",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }

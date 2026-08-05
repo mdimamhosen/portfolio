@@ -98,7 +98,7 @@ const Experience = () => {
     >
       <div className="max-w-6xl mx-auto w-full content-overlay flex flex-col h-full max-h-[85vh] justify-center">
         <div>
-          <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">02 / Experience</p>
+          <p className="text-mono mb-2 opacity-60 text-xs sm:text-sm">03 / Experience</p>
           <h2
             ref={headingRef}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center lg:text-left"

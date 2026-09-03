@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { getUserDetails } from "@/utils/userDetails";
 import { sendEmail } from "@/lib/email";
+import { sendVisitorEvent } from "@/utils/visitorInfo";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -86,6 +87,13 @@ const Contact = () => {
         user_details: userDetails,
         to_email: "mimam22.cse@bu.ac.bd", // Fallback/default if template logic requires it
       });
+
+      // Link voluntarily provided contact info to the visitor session
+      try {
+        await sendVisitorEvent({ name, email });
+      } catch (trackError) {
+        console.warn("Could not attach contact to visitor session", trackError);
+      }
 
       toast.success("Message sent successfully!", {
         description: "Thank you for reaching out. I will back to you soon.",

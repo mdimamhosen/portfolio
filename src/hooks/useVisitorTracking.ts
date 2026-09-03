@@ -1,46 +1,23 @@
 import { useEffect } from 'react';
+import { sendVisitorEvent } from '@/utils/visitorInfo';
 
 export const useVisitorTracking = () => {
   useEffect(() => {
+    let cancelled = false;
+
     const trackVisitor = async () => {
       try {
-        const endpoint = import.meta.env.VITE_TRACKING_ENDPOINT;
-
-        if (!endpoint) {
-          console.warn('Tracking endpoint not set (VITE_TRACKING_ENDPOINT). Skipping visitor log.');
-          return;
-        }
-
-        const visitorData = {
-          user_agent: navigator.userAgent,
-          referrer: document.referrer || null,
-          page_url: window.location.href,
-          screen_resolution: `${window.screen.width}x${window.screen.height}`,
-          language: navigator.language,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          visited_at: new Date().toISOString(),
-        };
-
-        const headers: Record<string, string> = {
-          'Content-Type': 'application/json',
-        };
-
-        const apiKey = import.meta.env.VITE_TRACKING_API_KEY;
-        if (apiKey) {
-          headers['Authorization'] = `Bearer ${apiKey}`;
-        }
-
-        await fetch(endpoint, {
-          method: 'POST',
-          headers,
-          body: JSON.stringify(visitorData),
-          keepalive: true,
-        });
+        if (cancelled) return;
+        await sendVisitorEvent();
       } catch (error) {
         console.error('Failed to track visitor:', error);
       }
     };
 
-    trackVisitor();
+    const timer = window.setTimeout(trackVisitor, 400);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
   }, []);
 };

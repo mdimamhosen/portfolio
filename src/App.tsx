@@ -10,6 +10,7 @@ import Share from "./pages/Share";
 import Login from "./pages/Login";
 import AdminFiles from "./pages/AdminFiles";
 import { useSessionNotification } from "@/hooks/useSessionNotification";
+import PortfolioChat from "@/components/PortfolioChat";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => {
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <PortfolioChat />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

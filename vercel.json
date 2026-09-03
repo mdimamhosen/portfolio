@@ -1,5 +1,18 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/chat.ts": {
+      "maxDuration": 30
+    },
+    "api/ingest.ts": {
+      "maxDuration": 60
+    },
+    "api/track.ts": {
+      "maxDuration": 15
+    }
+  },
   "headers": [
     {
       "source": "/sw.js",

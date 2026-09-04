@@ -44,13 +44,8 @@ const Index = () => {
       sectionElements.forEach((section, i) => {
         ScrollTrigger.create({
           trigger: section,
-          start: "top top",
-          end: "bottom top",
-          snap: {
-            snapTo: 1,
-            duration: { min: 0.3, max: 0.6 },
-            ease: "power2.inOut",
-          },
+          start: "top center",
+          end: "bottom center",
           onEnter: () => setCurrentSection(i),
           onEnterBack: () => setCurrentSection(i),
         });
@@ -59,18 +54,18 @@ const Index = () => {
         if (content) {
           gsap.fromTo(
             content,
-            { opacity: 0, y: 100, scale: 0.95 },
+            { opacity: 0, y: 40, scale: 0.98 },
             {
               opacity: 1,
               y: 0,
               scale: 1,
-              duration: 1,
+              duration: 0.8,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: section,
-                start: "top 80%",
-                end: "top 20%",
-                toggleActions: "play none none reverse",
+                start: "top 85%",
+                toggleActions: "play none none none",
+                once: true,
               },
             },
           );

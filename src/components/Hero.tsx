@@ -64,42 +64,41 @@ const Hero = ({ onViewProjects, onContact }: HeroProps) => {
 
       gsap.set([nameRef.current, titleRef.current, ctaRef.current], {
         opacity: 0,
-        y: 80,
+        y: 20,
       });
       gsap.set(lineRef.current, { scaleX: 0 });
 
       tl.to(nameRef.current, {
         opacity: 1,
         y: 0,
-        duration: 1.4,
-        delay: 0.5,
+        duration: 0.4,
       })
         .to(
           lineRef.current,
           {
             scaleX: 1,
-            duration: 1,
-            ease: "power4.inOut",
+            duration: 0.3,
+            ease: "power2.out",
           },
-          "-=0.8"
+          "-=0.2"
         )
         .to(
           titleRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 1.2,
+            duration: 0.4,
           },
-          "-=0.6"
+          "-=0.2"
         )
         .to(
           ctaRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 1,
+            duration: 0.4,
           },
-          "-=0.6"
+          "-=0.2"
         );
     }, sectionRef);
 
@@ -109,12 +108,12 @@ const Hero = ({ onViewProjects, onContact }: HeroProps) => {
   return (
     <div
       ref={sectionRef}
-      className="section-container h-screen flex flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden"
+      className="section-container min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 relative py-12"
     >
       {/* Content */}
       <div className="content-overlay text-center max-w-5xl mx-auto">
         {/* Label */}
-        <p className="text-mono mb-4 md:mb-8 opacity-40 text-xs sm:text-sm">Software Engineer | Web, Backend & AI Agents</p>
+        <p className="text-mono mb-4 md:mb-8 text-foreground/80 text-xs sm:text-sm tracking-widest uppercase">Software Engineer | Web, Backend & AI Agents</p>
 
         {/* Name */}
         <h1 ref={nameRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter mb-4 md:mb-6">

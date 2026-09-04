@@ -2,8 +2,8 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { buildEmbeddings, listKnowledge } from './_lib/rag';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+  if (req.method !== 'POST' && req.method !== 'GET') {
+    res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
@@ -17,18 +17,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(503).json({ error: 'OPENAI_API_KEY is not configured' });
-    }
-
     const store = await buildEmbeddings(true);
     return res.status(200).json({
       ok: true,
+      provider: 'deepseek',
+      retrieval: 'lexical',
       chunks: store.length,
       knowledge: listKnowledge().map((c) => ({ id: c.id, title: c.title, category: c.category })),
     });
   } catch (error) {
     console.error('Ingest error', error);
-    return res.status(500).json({ error: 'Failed to build embeddings' });
+    return res.status(500).json({ error: 'Failed to list knowledge chunks' });
   }
 }

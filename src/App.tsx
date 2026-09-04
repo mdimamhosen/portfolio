@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import AdminFiles from "./pages/AdminFiles";
 import { useSessionNotification } from "@/hooks/useSessionNotification";
 import PortfolioChat from "@/components/PortfolioChat";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const queryClient = new QueryClient();
 
@@ -18,25 +19,28 @@ const App = () => {
   useSessionNotification();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/share" element={<Share />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/admin" element={<AdminFiles />} />
-            <Route path="/admin/visitors" element={<AdminVisitors />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <PortfolioChat />
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/share" element={<Share />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/admin" element={<AdminFiles />} />
+              <Route path="/admin/visitors" element={<AdminVisitors />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <PortfolioChat />
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 };
 
 export default App;
+

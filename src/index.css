@@ -92,15 +92,19 @@
     overflow-x: hidden;
   }
 
-  /* Hide scrollbar globally */
-  html::-webkit-scrollbar,
-  body::-webkit-scrollbar {
-    display: none;
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
   }
-
-  html, body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  ::-webkit-scrollbar-track {
+    background: hsl(0 0% 4%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(0 0% 25%);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0 0% 45%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -215,25 +219,18 @@
 
   /* Full-screen Panel */
   .panel {
-    @apply h-screen w-screen flex items-center justify-center relative;
-    min-height: 100vh;
-    min-height: 100dvh;
-    max-height: 100vh;
-    max-height: 100dvh;
-    overflow: hidden;
+    @apply min-h-screen w-full flex items-center justify-center relative py-12 md:py-20;
     will-change: transform;
   }
 
   .panel-content {
     @apply w-full h-full flex items-center justify-center;
-    overflow: hidden;
   }
 
-  /* Full-screen Section */
+  /* Section Container */
   .section-container {
-    @apply h-full w-full flex items-center justify-center relative;
+    @apply w-full flex items-center justify-center relative;
     will-change: transform;
-    overflow: hidden;
   }
 
   /* Canvas Container */

@@ -32,8 +32,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(503).json({ error: 'OPENAI_API_KEY is not configured' });
+    if (!process.env.DEEPSEEK_API_KEY) {
+      return res.status(503).json({ error: 'DEEPSEEK_API_KEY is not configured' });
     }
 
     const body = parseBody(req);

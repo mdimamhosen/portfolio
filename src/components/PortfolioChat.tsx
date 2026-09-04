@@ -103,7 +103,7 @@ const PortfolioChat = () => {
               <div>
                 <p className="text-sm font-medium">Ask about Imam</p>
                 <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                  Portfolio RAG · OpenAI
+                  Portfolio RAG · DeepSeek
                 </p>
               </div>
             </div>

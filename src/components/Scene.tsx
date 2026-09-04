@@ -1,16 +1,30 @@
-import { Suspense } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stars, Preload } from '@react-three/drei';
 import Galaxy from './3d/Galaxy';
 import CosmicParticles from './3d/CosmicParticles';
 import MouseFollower from './3d/MouseFollower';
 import CameraController from './3d/CameraController';
-import DNA from './3d/DNA';
-import { FloatingCube, WireframeSphere } from './3d/FloatingGeometry';
-import QuantumElements from './3d/QuantumElements';
 import ScrollRing from './3d/ScrollRing';
 import Universe from './3d/Universe';
 import WaveGrid from './3d/WaveGrid';
+import SceneFallback from './3d/SceneFallback';
+import ErrorBoundary from './ErrorBoundary';
+
+const isWebGLSupported = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  try {
+    const canvas = document.createElement('canvas');
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext('webgl2') ||
+          canvas.getContext('webgl') ||
+          canvas.getContext('experimental-webgl'))
+    );
+  } catch {
+    return false;
+  }
+};
 
 const SceneContent = () => {
   return (
@@ -43,44 +57,57 @@ const SceneContent = () => {
       
       {/* Galaxy background */}
       <Galaxy />
-      {/* <DNA /> */}
-<ScrollRing />
+      <ScrollRing />
 
-<Universe />
-<WaveGrid />
+      <Universe />
+      <WaveGrid />
       <CosmicParticles count={600} />
       
       {/* Mouse follower */}
       <MouseFollower />
       
-      {/* Camera controller */}
-      <CameraController />
-      {/* <FloatingCube position={[10, 5, -10]} /> */}
       <Preload all />
     </>
   );
 };
 
 const Scene = () => {
+  const [supported, setSupported] = useState<boolean>(true);
+
+  useEffect(() => {
+    setSupported(isWebGLSupported());
+  }, []);
+
+  if (!supported) {
+    return <SceneFallback />;
+  }
+
   return (
-    <div className="canvas-container">
-      <Canvas
-        camera={{ position: [0, 0, 20], fov: 45 }}
-        gl={{ 
-          antialias: true, 
-          alpha: true,
-          powerPreference: "high-performance",
-          toneMapping: 3,
-          toneMappingExposure: 1
-        }}
-        dpr={[1, 2]}
-        performance={{ min: 0.5 }}
-      >
-        <Suspense fallback={null}>
-          <SceneContent />
-        </Suspense>
-      </Canvas>
-    </div>
+    <ErrorBoundary fallback={<SceneFallback />}>
+      <div className="canvas-container">
+        <Canvas
+          camera={{ position: [0, 0, 20], fov: 45 }}
+          gl={{ 
+            antialias: true, 
+            alpha: true,
+            powerPreference: "high-performance",
+            toneMapping: 3,
+            toneMappingExposure: 1
+          }}
+          dpr={[1, 2]}
+          performance={{ min: 0.5 }}
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener('webglcontextlost', () => {
+              setSupported(false);
+            });
+          }}
+        >
+          <Suspense fallback={null}>
+            <SceneContent />
+          </Suspense>
+        </Canvas>
+      </div>
+    </ErrorBoundary>
   );
 };
 

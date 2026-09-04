@@ -3,9 +3,18 @@ import App from "./App.tsx";
 import "./index.css";
 import { initEmail } from "./lib/email";
 
-initEmail();
+try {
+  initEmail();
+} catch (error) {
+  console.warn("Email init failed:", error);
+}
 
-createRoot(document.getElementById("root")!).render(<App />);
+const rootEl = document.getElementById("root");
+if (!rootEl) {
+  throw new Error("Root element #root not found");
+}
+
+createRoot(rootEl).render(<App />);
 
 // Unregister leftover PWA service workers (they cached stale HTML/assets).
 if ("serviceWorker" in navigator) {

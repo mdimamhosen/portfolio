@@ -24,6 +24,8 @@ export function getClientIp(req: VercelRequest): string {
     headers['x-forwarded-for'],
     headers['cf-connecting-ip'],
     headers['true-client-ip'],
+    headers['x-nf-client-connection-ip'],
+    headers['client-ip'],
   ];
 
   for (const value of candidates) {

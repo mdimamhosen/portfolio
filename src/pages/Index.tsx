@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import Navigation from "@/components/Navigation";
 import Scene from "@/components/Scene";
 
 import Hero from "@/components/Hero";
@@ -106,6 +107,21 @@ const Index = () => {
 
       {/* Noise overlay */}
       <div className="noise-overlay" />
+
+      {/* Navigation */}
+      <Navigation />
+
+      {/* Section Indicators */}
+      <div className="section-indicator hidden md:flex">
+        {sections.map((section, i) => (
+          <button
+            key={section.id}
+            onClick={() => scrollToSection(i)}
+            className={`section-dot ${currentSection === i ? "active" : ""}`}
+            aria-label={`Go to ${section.label}`}
+          />
+        ))}
+      </div>
 
       {/* Main Content - Full Screen Panels */}
       <main className="relative z-10">

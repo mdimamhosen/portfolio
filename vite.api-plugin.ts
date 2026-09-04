@@ -1,7 +1,8 @@
-import type { Connect, Plugin } from "vite";
+import type { IncomingMessage, ServerResponse } from "node:http";
+import type { Plugin } from "vite";
 import { loadEnv } from "vite";
 
-function readBody(req: Connect.IncomingMessage): Promise<string> {
+function readBody(req: IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {
     const chunks: Buffer[] = [];
     req.on("data", (chunk) => chunks.push(Buffer.from(chunk)));
@@ -10,7 +11,7 @@ function readBody(req: Connect.IncomingMessage): Promise<string> {
   });
 }
 
-function sendJson(res: Connect.ServerResponse, status: number, payload: unknown) {
+function sendJson(res: ServerResponse, status: number, payload: unknown) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -91,7 +92,6 @@ export function localApiPlugin(mode: string): Plugin {
             return;
           }
 
-          // Let Vite/other handlers deal with remaining /api routes (or 404).
           next();
         } catch (error) {
           console.error("[local-api]", error);

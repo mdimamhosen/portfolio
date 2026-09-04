@@ -11,6 +11,9 @@
     },
     "api/track.ts": {
       "maxDuration": 15
+    },
+    "api/visitors.ts": {
+      "maxDuration": 15
     }
   },
   "headers": [

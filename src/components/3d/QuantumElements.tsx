@@ -56,7 +56,7 @@ export const QuantumWave = ({ position = [0, 0, -15] as [number, number, number]
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
     >
-      <line ref={meshRef as any}>
+      <line ref={meshRef as unknown as React.Ref<SVGLineElement>}>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"

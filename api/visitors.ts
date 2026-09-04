@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getVisitorsCollection, hasMongo } from './lib/mongo';
+import { getVisitorsCollection, hasMongo } from './_lib/mongo';
 
 function setCors(res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*');

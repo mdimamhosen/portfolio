@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { randomUUID } from 'crypto';
-import { getClientIp, lookupGeo } from './lib/geo';
-import { getVisitorsCollection, hasMongo } from './lib/mongo';
+import { getClientIp, lookupGeo } from './_lib/geo';
+import { getVisitorsCollection, hasMongo } from './_lib/mongo';
 
 function setCors(res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*');

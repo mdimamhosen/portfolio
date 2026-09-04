@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { buildEmbeddings, listKnowledge } from './lib/rag';
+import { buildEmbeddings, listKnowledge } from './_lib/rag';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

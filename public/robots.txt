@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /login
 Disallow: /api/
-Disallow: /share
 Sitemap: https://mdimamhosen.netlify.app/sitemap.xml

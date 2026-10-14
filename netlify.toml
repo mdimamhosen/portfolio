@@ -47,7 +47,49 @@
   status = 200
   force = true
 
-# Existing React Router pages keep direct-refresh support.
+[[redirects]]
+  from = "/blog"
+  to = "/.netlify/functions/blog-page"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/.netlify/functions/blog-page"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/blog/auth"
+  to = "/.netlify/functions/blog-auth"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/blog/articles"
+  to = "/.netlify/functions/blog-articles"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/blog/upload"
+  to = "/.netlify/functions/blog-upload"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/blog-sitemap"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/feed.xml"
+  to = "/.netlify/functions/blog-feed"
+  status = 200
+  force = true
+
+# Existing client-side routes retain direct-refresh support.
 [[redirects]]
   from = "/share"
   to = "/index.html"
@@ -68,11 +110,11 @@
   to = "/index.html"
   status = 200
 
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Cache-Control = "no-store"
+[[redirects]]
+  from = "/admin/blog"
+  to = "/index.html"
+  status = 200
+
 
 [[headers]]
   for = "/admin"
@@ -81,12 +123,18 @@
     Cache-Control = "no-store"
 
 [[headers]]
-  for = "/login"
+  for = "/share"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
-  for = "/share"
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/login"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 

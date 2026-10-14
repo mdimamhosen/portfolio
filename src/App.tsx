@@ -9,6 +9,9 @@ import AdminVisitors from "./pages/AdminVisitors";
 import Share from "./pages/Share";
 import Login from "./pages/Login";
 import AdminFiles from "./pages/AdminFiles";
+import { lazy, Suspense } from "react";
+import Analytics from "./components/Analytics";
+const BlogAdmin = lazy(() => import("./pages/BlogAdmin"));
 import { useSessionNotification } from "@/hooks/useSessionNotification";
 import PortfolioChat from "@/components/PortfolioChat";
 import ErrorBoundary from "@/components/ErrorBoundary";
@@ -25,12 +28,14 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <Analytics />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/share" element={<Share />} />
               <Route path="/login" element={<Login />} />
               <Route path="/admin" element={<AdminFiles />} />
               <Route path="/admin/visitors" element={<AdminVisitors />} />
+              <Route path="/admin/blog" element={<Suspense fallback={<div className="min-h-screen bg-slate-950 p-8 text-white">Loading editor…</div>}><BlogAdmin /></Suspense>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

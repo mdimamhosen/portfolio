@@ -35,8 +35,70 @@
   status = 200
   force = true
 
-# SPA fallback
 [[redirects]]
-  from = "/*"
+  from = "/services"
+  to = "/.netlify/functions/services-page"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/services/*"
+  to = "/.netlify/functions/services-page"
+  status = 200
+  force = true
+
+# Existing React Router pages keep direct-refresh support.
+[[redirects]]
+  from = "/share"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/visitors"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/admin"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/login"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/share"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

@@ -124,6 +124,8 @@ const Contact = () => {
       href: `https://wa.me/8801733570761?text=${encodeURIComponent(getUserDetails())}`,
     },
     { icon: MapPin, label: "Location", value: "Barishal Sadar, Bangladesh" },
+    { icon: LinkIcon, label: "GitHub", value: "mdimamhosen", href: "https://github.com/mdimamhosen" },
+    { icon: LinkIcon, label: "LinkedIn", value: "Md. Imam Hosen", href: "https://www.linkedin.com/in/mdimam02/" },
     {
       icon: LinkIcon,
       label: "Upwork",
@@ -135,7 +137,7 @@ const Contact = () => {
   return (
     <div
       ref={sectionRef}
-      className="section-container h-screen py-12   px-1 sm:px-2 relative overflow-hidden"
+      className="section-container min-h-screen py-12 px-1 sm:px-2 relative"
     >
       <div className="max-w-none mx-auto content-overlay h-full flex items-center">
         <div className="w-full">
@@ -173,7 +175,7 @@ const Contact = () => {
                       <a
                         href={item.href}
                         target={
-                          item.label === "Upwork" ||
+                          item.label === "Upwork" || item.label === "GitHub" || item.label === "LinkedIn" ||
                           item.label.includes("WhatsApp")
                             ? "_blank"
                             : undefined

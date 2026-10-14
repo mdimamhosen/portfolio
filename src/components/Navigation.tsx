@@ -151,6 +151,8 @@ const Navigation = () => {
             ))}
           </div>
 
+          <a href="/services" className="hidden lg:block text-sm font-medium text-muted-foreground hover:text-foreground">Services</a>
+          <a href="/blog" className="hidden lg:block text-sm font-medium text-muted-foreground hover:text-foreground">Blog</a>
           {/* CTA Button */}
           <a
             href="#contact"
@@ -206,7 +208,7 @@ const Navigation = () => {
             </div>
 
             {/* Menu Items */}
-            <div className="flex flex-col p-4 gap-1">
+            <div className="flex max-h-[calc(100vh-210px)] flex-col gap-1 overflow-y-auto p-4">
               {/* Home link */}
               <a
                 ref={(el) => (menuItemsRef.current[0] = el)}
@@ -254,6 +256,8 @@ const Navigation = () => {
               ))}
             </div>
 
+            <a href="/services" className="mx-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/50">Services</a>
+            <a href="/blog" className="mx-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/50">Blog</a>
             {/* CTA Button */}
             <div className="absolute bottom-8 left-4 right-4">
               <a

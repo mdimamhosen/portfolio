@@ -12,9 +12,11 @@ dist
 dist-ssr
 *.tsbuildinfo
 *.local
+.env
+.env.*
 !.env.example
 
-!.vscode/extensions.json
+.vscode/
 .idea
 .DS_Store
 *.suo

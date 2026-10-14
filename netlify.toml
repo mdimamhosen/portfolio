@@ -89,9 +89,29 @@
   status = 200
   force = true
 
-# SPA fallback
+# Existing client-side routes retain direct-refresh support.
 [[redirects]]
-  from = "/*"
+  from = "/share"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/visitors"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/blog"
   to = "/index.html"
   status = 200
 

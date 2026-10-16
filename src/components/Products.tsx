@@ -44,8 +44,10 @@ const items: Item[] = [
   { name: "ConversationalDB", tagline: "Ask your database in plain language; get SQL and answers back.", tags: ["AI", "Hackathons", "Open source"], tech: ["LLMs", "SQL"], code: "https://github.com/mdimamhosen/buet-hackathon" },
   { name: "Emergency Response Optimizer", tagline: "Country-scale backend that ingests incidents and allocates ambulances, hospitals and rescue teams, re-optimising live.", tags: ["Hackathons", "Open source"], tech: ["NestJS", "Optimisation"], code: "https://github.com/mdimamhosen/PSTUHackathon" },
   { name: "Relay Wallet", tagline: "Closed-loop peer-to-peer digital wallet (monorepo).", tags: ["Hackathons", "Open source"], tech: ["TypeScript", "Monorepo"], code: "https://github.com/mdimamhosen/PSTUFinalHackathon" },
-  { name: "Mars Walk Planner", tagline: "Plan a walk on Mars from evidence, not guesswork. NASA Space Apps Challenge.", tags: ["Hackathons", "Open source"], tech: ["TypeScript", "NASA data"], code: "https://github.com/mdimamhosen/NASASpaceAPPChallenge" },
 ];
+
+// Set `live` once the hosted demo URL exists.
+const MARS: { code: string; live?: string } = { code: "https://github.com/mdimamhosen/NASASpaceAPPChallenge" };
 
 const filters: ("All" | Category)[] = ["All", "Products", "SaaS", "AI", "Open source", "Hackathons"];
 
@@ -123,6 +125,36 @@ const Products = () => {
                   <div className="text-xs text-muted-foreground mt-1">{l}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* NASA Space Apps feature */}
+        <div className="prod-hero relative overflow-hidden rounded-3xl mb-14 border border-orange-500/20 bg-background/70 backdrop-blur-md">
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/15 via-red-500/10 to-indigo-700/15" />
+          <div className="relative grid lg:grid-cols-[1fr_1.1fr] gap-10 p-8 md:p-12 items-center">
+            <a href={MARS.code} target="_blank" rel="noreferrer" className="block rounded-2xl overflow-hidden border border-border group/img order-2 lg:order-1">
+              <img src="/projects/mars-explorer.jpg" alt="Mars Explorer: Mars globe with orbit rings beside the MARS EXPLORER wordmark" loading="lazy" className="w-full h-auto group-hover/img:scale-[1.03] transition-transform duration-700" />
+            </a>
+            <div className="order-1 lg:order-2">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full bg-orange-500/15 text-orange-400 mb-5">
+                <Sparkles className="w-3.5 h-3.5" /> NASA Space Apps Challenge 2026 · Team Binary Explorers
+              </span>
+              <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Mars Explorer</h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                Plan a walk on Mars from evidence, not guesswork. An evidence-first survival map for Jezero Crater built on NASA
+                data: draw a Marswalk, score it against NASA terrain with a Traverse Risk Index and A* corridor, fly it in 3D, ask a
+                cited AI mission agent, and export a briefing — even with the wifi off.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {["Next.js 15", "NestJS 11", "Three.js", "RAG", "AI agent", "NASA PDS · Trek · EONET"].map((t) => (
+                  <span key={t} className="px-3 py-1 text-xs bg-muted rounded-full text-muted-foreground">{t}</span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {MARS.live && <a href={MARS.live} target="_blank" rel="noreferrer" className="btn-primary inline-flex items-center gap-2">Open the app <ArrowUpRight className="w-4 h-4" /></a>}
+                <a href={MARS.code} target="_blank" rel="noreferrer" className={`${MARS.live ? "btn-outline" : "btn-primary"} inline-flex items-center gap-2`}><Github className="w-4 h-4" /> Source &amp; demo</a>
+              </div>
             </div>
           </div>
         </div>

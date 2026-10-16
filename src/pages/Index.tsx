@@ -10,6 +10,7 @@ import CoHost from "@/components/CoHost";
 import SkillsGrid from "@/components/SkillsGrid";
 import SkillsExpertise from "@/components/SkillsExpertise";
 import ProjectSlider from "@/components/ProjectSlider";
+import Products from "@/components/Products";
 import Automation from "@/components/Automation";
 import AIAgents from "@/components/AIAgents";
 import WebAppShowcase from "@/components/WebAppShowcase";
@@ -24,6 +25,7 @@ const sections = [
   { id: "skills", label: "Skills" },
   { id: "skills-expertise", label: "Expertise" },
   { id: "projects", label: "Projects" },
+  { id: "products", label: "Products" },
   { id: "automation", label: "Automation" },
   { id: "ai-agents", label: "AI Agents" },
   { id: "web-apps", label: "Web Apps" },
@@ -160,6 +162,12 @@ const Index = () => {
         <section id="projects" className="panel">
           <div className="panel-content h-full">
             <ProjectSlider />
+          </div>
+        </section>
+
+        <section id="products" className="panel">
+          <div className="panel-content h-full">
+            <Products />
           </div>
         </section>
 

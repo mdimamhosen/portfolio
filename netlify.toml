@@ -10,6 +10,19 @@
   node_bundler = "esbuild"
   external_node_modules = ["openai", "mongodb"]
 
+# DropBridge product site lives on GitHub Pages; serve it under this domain.
+[[redirects]]
+  from = "/DropBridge"
+  to = "/DropBridge/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/DropBridge/*"
+  to = "https://mdimamhosen.github.io/DropBridge/:splat"
+  status = 200
+  force = true
+
 # API → Netlify Functions (must come before SPA fallback)
 [[redirects]]
   from = "/api/chat"

@@ -15,6 +15,7 @@ import Automation from "@/components/Automation";
 import AIAgents from "@/components/AIAgents";
 import WebAppShowcase from "@/components/WebAppShowcase";
 import Contact from "@/components/Contact";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { useVisitorTracking } from "@/hooks/useVisitorTracking";
 
 const sections = [
@@ -161,7 +162,16 @@ const Index = () => {
 
         <section id="projects" className="panel">
           <div className="panel-content h-full">
-            <ProjectSlider />
+            <ErrorBoundary
+              fallback={
+                <div className="flex h-full items-center justify-center px-6 text-center text-sm text-white/70">
+                  Featured work could not load. Refresh the page or use the external
+                  project links after reload.
+                </div>
+              }
+            >
+              <ProjectSlider />
+            </ErrorBoundary>
           </div>
         </section>
 

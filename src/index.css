@@ -313,3 +313,8 @@
     display: none;
   }
 }
+/* Blog editor preview syntax and table styling. */
+.prose .hljs-keyword, .prose .hljs-title { color: #80d8ff; }
+.prose .hljs-string { color: #a7e8b4; }
+.prose .hljs-comment { color: #91a0b4; }
+.prose table { display: block; overflow-x: auto; }

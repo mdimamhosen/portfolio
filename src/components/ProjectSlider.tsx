@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { gsap } from "@/lib/gsap";
 import { ChevronLeft, ChevronRight, Loader2, ExternalLink, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -240,8 +241,26 @@ const PUBLIC_PREVIEW_PROJECTS = projects.filter(
 );
 
 const PUBLIC_PREVIEW_ORIGINS = [
-  ...new Set(PUBLIC_PREVIEW_PROJECTS.map((p) => new URL(p.link).origin)),
+  ...new Set(
+    PUBLIC_PREVIEW_PROJECTS.map((p) => {
+      try {
+        return new URL(p.link).origin;
+      } catch {
+        return null;
+      }
+    }).filter((origin): origin is string => Boolean(origin)),
+  ),
 ];
+
+function scheduleIdleWork(work: () => void, timeoutMs = 1200) {
+  const requestIdle = window.requestIdleCallback;
+  if (requestIdle) {
+    const id = requestIdle(work, { timeout: timeoutMs });
+    return () => window.cancelIdleCallback(id);
+  }
+  const id = window.setTimeout(work, Math.min(timeoutMs, 500));
+  return () => window.clearTimeout(id);
+}
 
 type PreviewMeta = {
   url: string;
@@ -257,9 +276,13 @@ const ProjectSlider = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewMeta, setPreviewMeta] = useState<PreviewMeta | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
-  const [warmPreviews, setWarmPreviews] = useState(false);
+  const [mountedPreviewUrls, setMountedPreviewUrls] = useState<string[]>([]);
   const loadedPreviewUrls = useRef(new Set<string>());
   const activePreviewUrlRef = useRef<string | null>(null);
+
+  const queuePreviewMount = useCallback((url: string) => {
+    setMountedPreviewUrls((prev) => (prev.includes(url) ? prev : [...prev, url]));
+  }, []);
 
   const markPreviewLoaded = useCallback((url: string) => {
     loadedPreviewUrls.current.add(url);
@@ -268,29 +291,36 @@ const ProjectSlider = () => {
     }
   }, []);
 
-  const openLivePreview = useCallback((meta: PreviewMeta) => {
-    activePreviewUrlRef.current = meta.url;
-    setPreviewMeta(meta);
-    setPreviewOpen(true);
-    setPreviewLoading(!loadedPreviewUrls.current.has(meta.url));
-  }, []);
+  const openLivePreview = useCallback(
+    (meta: PreviewMeta) => {
+      queuePreviewMount(meta.url);
+      activePreviewUrlRef.current = meta.url;
+      setPreviewMeta(meta);
+      setPreviewOpen(true);
+      setPreviewLoading(!loadedPreviewUrls.current.has(meta.url));
+    },
+    [queuePreviewMount],
+  );
 
   useEffect(() => {
-    const idleId = window.requestIdleCallback(
-      () => setWarmPreviews(true),
-      { timeout: 1200 },
-    );
-    return () => window.cancelIdleCallback(idleId);
-  }, []);
+    return scheduleIdleWork(() => {
+      const current = projects[currentIndex];
+      if (current.link && current.link !== "#" && !current.privatePreview) {
+        queuePreviewMount(current.link);
+      }
+    });
+  }, [currentIndex, queuePreviewMount]);
 
   useEffect(() => {
-    const links = PUBLIC_PREVIEW_ORIGINS.map(
-      (origin) => `<link rel="preconnect" href="${origin}" crossorigin />`,
-    ).join("");
-    const tpl = document.createElement("template");
-    tpl.innerHTML = links;
-    const nodes = [...tpl.content.children];
-    nodes.forEach((node) => document.head.appendChild(node));
+    const nodes: HTMLLinkElement[] = [];
+    for (const origin of PUBLIC_PREVIEW_ORIGINS) {
+      const link = document.createElement("link");
+      link.rel = "preconnect";
+      link.href = origin;
+      link.crossOrigin = "";
+      document.head.appendChild(link);
+      nodes.push(link);
+    }
     return () => nodes.forEach((node) => node.remove());
   }, []);
 
@@ -485,88 +515,93 @@ const ProjectSlider = () => {
         </div>
       </div>
 
-      {(warmPreviews || previewOpen) && (
-        <>
-          {previewOpen && (
-            <button
-              type="button"
-              aria-label="Close preview"
-              className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-sm"
-              onClick={() => setPreviewOpen(false)}
-            />
-          )}
-          <div
-            role="dialog"
-            aria-modal={previewOpen}
-            aria-hidden={!previewOpen}
-            aria-label={previewMeta?.title ?? "Project preview"}
-            className={cn(
-              "fixed z-[60] flex max-w-5xl flex-col overflow-hidden border border-white/10 bg-black/80 backdrop-blur-xl",
-              previewOpen
-                ? "left-1/2 top-1/2 h-[90vh] w-[95vw] -translate-x-1/2 -translate-y-1/2"
-                : "pointer-events-none left-0 top-0 h-[720px] w-[1280px] -translate-x-full opacity-0",
-            )}
-          >
-            <div
-              className={cn(
-                "flex items-center justify-between border-b border-white/10 bg-black/40 p-4",
-                !previewOpen && "hidden",
-              )}
-            >
-              <div className="flex items-center gap-3">
-                <div className="h-2 w-2 rounded-full bg-red-500" />
-                <div className="h-2 w-2 rounded-full bg-yellow-500" />
-                <div className="h-2 w-2 rounded-full bg-green-500" />
-              </div>
-              {previewMeta && (
-                <a
-                  href={previewMeta.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:text-white"
-                >
-                  <ExternalLink className="h-3 w-3" />
-                  {previewMeta.cta}
-                </a>
-              )}
+      {(previewOpen || mountedPreviewUrls.length > 0) &&
+        createPortal(
+          <>
+            {previewOpen && (
               <button
                 type="button"
-                className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100"
+                aria-label="Close preview"
+                className="fixed inset-0 z-[200] bg-black/40 backdrop-blur-sm"
                 onClick={() => setPreviewOpen(false)}
-              >
-                <X className="h-4 w-4" />
-                <span className="sr-only">Close</span>
-              </button>
-            </div>
-
-            <div className="relative min-h-0 flex-1 bg-white">
-              {previewOpen && previewLoading && (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/90">
-                  <Loader2 className="mb-4 h-10 w-10 animate-spin text-primary" />
-                  <p className="font-mono text-sm text-primary/60">
-                    Establishing secure connection...
-                  </p>
-                </div>
+              />
+            )}
+            <div
+              role="dialog"
+              aria-modal={previewOpen}
+              aria-hidden={!previewOpen}
+              aria-label={previewMeta?.title ?? "Project preview"}
+              className={cn(
+                "fixed z-[210] flex max-w-5xl flex-col overflow-hidden border border-white/10 bg-black/80 backdrop-blur-xl",
+                previewOpen
+                  ? "left-1/2 top-1/2 h-[90vh] w-[95vw] -translate-x-1/2 -translate-y-1/2"
+                  : "pointer-events-none left-0 top-0 h-[720px] w-[1280px] -translate-x-full opacity-0",
               )}
-              {PUBLIC_PREVIEW_PROJECTS.map((p) => (
-                <iframe
-                  key={p.link}
-                  src={p.link}
-                  title={p.title}
-                  className={cn(
-                    "absolute inset-0 h-full w-full border-none",
-                    previewMeta?.url === p.link
-                      ? "z-10"
-                      : "pointer-events-none invisible z-0",
-                  )}
-                  onLoad={() => markPreviewLoaded(p.link)}
-                  allowFullScreen
-                />
-              ))}
+            >
+              <div
+                className={cn(
+                  "relative flex items-center justify-between border-b border-white/10 bg-black/40 p-4",
+                  !previewOpen && "hidden",
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-red-500" />
+                  <div className="h-2 w-2 rounded-full bg-yellow-500" />
+                  <div className="h-2 w-2 rounded-full bg-green-500" />
+                </div>
+                {previewMeta && (
+                  <a
+                    href={previewMeta.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:text-white"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    {previewMeta.cta}
+                  </a>
+                )}
+                <button
+                  type="button"
+                  className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100"
+                  onClick={() => setPreviewOpen(false)}
+                >
+                  <X className="h-4 w-4" />
+                  <span className="sr-only">Close</span>
+                </button>
+              </div>
+
+              <div className="relative min-h-0 flex-1 bg-white">
+                {previewOpen && previewLoading && (
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/90">
+                    <Loader2 className="mb-4 h-10 w-10 animate-spin text-primary" />
+                    <p className="font-mono text-sm text-primary/60">
+                      Establishing secure connection...
+                    </p>
+                  </div>
+                )}
+                {mountedPreviewUrls.map((url) => {
+                  const meta = PUBLIC_PREVIEW_PROJECTS.find((p) => p.link === url);
+                  return (
+                    <iframe
+                      key={url}
+                      src={url}
+                      title={meta?.title ?? "Project preview"}
+                      className={cn(
+                        "absolute inset-0 h-full w-full border-none",
+                        previewMeta?.url === url
+                          ? "z-10"
+                          : "pointer-events-none invisible z-0",
+                      )}
+                      onLoad={() => markPreviewLoaded(url)}
+                      allowFullScreen
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </>
-      )}
+          </>,
+          document.body,
+        )}
     </div>
   );
 };

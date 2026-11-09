@@ -1,0 +1,241 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+
+const projects = [
+  {
+    title: "ClientServe AI",
+    description:
+      "Developed this autonomous AI customer service agent system while working at Hashthink Technologies. Utilizes Retrieval-Augmented Generation (RAG) to handle voice, SMS, and chat interactions 24/7.",
+    tech: ["AI Agents", "RAG", "LLMs", "Vector DB"],
+    gradient: "from-violet-500/20 to-fuchsia-600/20",
+    link: "https://clientserve.ai/",
+    cta: "Visit ClientServe AI",
+  },
+  {
+    title: "Apeiro",
+    description:
+      "Worked on this brand-experience platform while working at Rixotect. Rebuilt the checkout system and executed the launch campaign, increasing conversions by 38%.",
+    tech: ["Next.js", "React", "TailwindCSS", "CRO"],
+    gradient: "from-red-500/20 to-rose-600/20",
+    link: "https://apeiro.ca/",
+    cta: "Visit Apeiro",
+  },
+  {
+    title: "Protiniyoto",
+    description:
+      "An active, fully-featured e-commerce platform in Bangladesh for gadgets, smart watches, accessories, and home appliances.",
+    tech: ["Next.js", "React", "TailwindCSS", "E-commerce"],
+    gradient: "from-blue-500/20 to-indigo-600/20",
+    link: "https://protiniyoto.com/",
+    cta: "Visit Protiniyoto",
+  },
+  {
+    title: "GreenBasket",
+    description:
+      "GreenBasket is your trusted multi-vendor marketplace for fresh, organic produce delivered to your doorstep.",
+    tech: ["Next.js", "TailwindCSS", "Supabase", "Framer Motion"],
+    gradient: "from-green-500/20 to-emerald-600/20",
+    link: "https://greenbasket-six.vercel.app/",
+    cta: "Visit GreenBasket",
+  },
+  {
+    title: "LeafCare Ai",
+    description:
+      "AI Based tree diseases detection platform for farmers and researchers.",
+    tech: ["Next.js", "TensorFlow", "TailwindCSS", "AI"],
+    gradient: "from-green-400/20 to-lime-500/20",
+    link: "https://leafcareai-ruddy.vercel.app/",
+    cta: "Visit LeafCare AI",
+  },
+  {
+    title: "TreLux",
+    description:
+      "E-Commerce Mens shopping website with modern UI and seamless checkout.",
+    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    gradient: "from-blue-500/20 to-indigo-600/20",
+    link: "https://trelux.vercel.app/",
+    cta: "Visit TreLux",
+  },
+  {
+    title: "EduCoder",
+    description:
+      "EduCoder is an e-learning platform that connects students and instructors, providing tools for effective course management.",
+    tech: ["Next.js", "Supabase", "TailwindCSS"],
+    gradient: "from-blue-400/20 to-cyan-500/20",
+    link: "https://edu-coder.vercel.app/",
+    cta: "Visit EduCoder",
+  },
+  {
+    title: "ReviewHub",
+    description:
+      "ReviewHub is a product review platform that enables users to explore and contribute premium and interactive reviews.",
+    tech: ["React", "Node.js", "MongoDB"],
+    gradient: "from-yellow-400/20 to-pink-500/20",
+    link: "https://assignment-9-client-iota.vercel.app/",
+    cta: "Visit ReviewHub",
+  },
+  {
+    title: "BU-Trace",
+    description: "Realtime Bus Tracking system for University of Barishal.",
+    tech: ["React Native", "Firebase", "Map APIs"],
+    gradient: "from-green-400/20 to-blue-500/20",
+    link: "#",
+  },
+];
+
+const Projects = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const projectsContainerRef = useRef<HTMLDivElement>(null);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading animation
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          },
+        },
+      );
+
+      // Projects stagger with depth effect
+      projectRefs.current.forEach((project, i) => {
+        if (project) {
+          gsap.fromTo(
+            project,
+            {
+              opacity: 0,
+              y: 80,
+              rotateX: 10,
+              scale: 0.95,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              rotateX: 0,
+              scale: 1,
+              duration: 1,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: project,
+                start: "top 80%",
+                end: "top 50%",
+                toggleActions: "play none none reverse",
+              },
+              delay: i * 0.1,
+            },
+          );
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="section-container min-h-screen py-32 px-6 relative"
+    >
+      <div className="max-w-6xl mx-auto content-overlay">
+        {/* Section label */}
+        <p className="text-mono mb-4 opacity-60">04 / Projects</p>
+
+        <div ref={headingRef} className="mb-16">
+          <h2 className="text-section">
+            Featured <span className="text-primary text-glow">Work</span>
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-xl">
+            A selection of projects showcasing expertise in mobile apps, AI
+            agents, and full-stack systems.
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div ref={projectsContainerRef} className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, i) => (
+            <div
+              key={project.title}
+              ref={(el) => { projectRefs.current[i] = el; }}
+              className="group relative overflow-hidden rounded-2xl cursor-pointer perspective-1000"
+            >
+              {/* Background gradient */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              />
+
+              {/* Card content */}
+              <div className="glass-card p-8 relative z-10 h-full border-transparent group-hover:border-primary/20 transition-all duration-500">
+                {/* Number */}
+                <span className="text-6xl font-bold text-muted/20 absolute top-4 right-6">
+                  0{i + 1}
+                </span>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 text-xs bg-muted rounded-full text-muted-foreground"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Link */}
+                  <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    <span>View Project</span>
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Hover glow effect */}
+                <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View all link */}
+        <div className="mt-12 text-center">
+          <button className="btn-outline">View All Projects</button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Projects;

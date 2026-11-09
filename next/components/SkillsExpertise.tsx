@@ -1,0 +1,101 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
+import { gsap } from '@/lib/gsap';
+import { Cpu, Bot, Wrench } from 'lucide-react';
+
+const expertiseAreas = [
+  {
+    title: "API & System Integration",
+    description: "Designing robust, secure RESTful APIs and real-time WebSocket communication flows",
+    icon: <Cpu className="text-primary w-8 h-8" />,
+  },
+  {
+    title: "AI Agent Systems",
+    description: "Building autonomous agents that reason, plan, and execute complex tasks",
+    icon: <Bot className="text-primary w-8 h-8" />,
+  },
+  {
+    title: "Full-Stack Architecture",
+    description: "Cloud-native architecture with AWS, Docker, Go, and scalable microservices",
+    icon: <Wrench className="text-primary w-8 h-8" />,
+  },
+];
+
+const SkillsExpertise = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        [headingRef.current, subtitleRef.current],
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        cardsRef.current,
+        { opacity: 0, y: 40, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={sectionRef} className="h-full flex flex-col justify-center px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full content-overlay">
+        <p className="text-mono mb-2 md:mb-4 opacity-60 text-xs sm:text-sm">04 / Expertise</p>
+        <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center lg:text-left">
+          Core <span className="text-primary text-glow">Strengths</span>
+        </h2>
+        <p ref={subtitleRef} className="text-muted-foreground mb-6 md:mb-10 max-w-2xl text-xs sm:text-sm md:text-base text-center lg:text-left">
+          Specialized focus areas where I bring deep technical knowledge and delivery experience.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
+          {expertiseAreas.map((item, i) => (
+            <div
+              key={i}
+              ref={(el) => { cardsRef.current[i] = el; }}
+              className="glass-card p-4 md:p-6 lg:p-8 group hover:border-primary/30 transition-all duration-500"
+            >
+              <div className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4">{item.icon}</div>
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors">
+                {item.title}
+              </h3>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SkillsExpertise;

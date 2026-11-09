@@ -19,6 +19,15 @@ const projects: Array<{
   loginPassword?: string;
 }> = [
   {
+    title: "DropBridge",
+    description:
+      "AirDrop-style file sharing between Android, macOS, Windows and Linux. A Rust core with TLS 1.3 encryption, BLAKE3 verification and resumable transfers; Tauri desktop app and Kotlin/Compose Android app. Open source.",
+    tech: ["Rust", "Tauri", "Kotlin", "TLS 1.3"],
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    link: "https://mdimamhosen.me/DropBridge/",
+    cta: "Visit DropBridge",
+  },
+  {
     title: "ClientServe AI",
     description:
       "Developed this autonomous AI customer service agent system while working at Hashthink Technologies. Utilizes Retrieval-Augmented Generation (RAG) to handle voice, SMS, and chat interactions 24/7.",
